@@ -1,0 +1,1918 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java基础入门, Yuhao&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Java基础入门 | Yuhao&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+<script src="/js/cursor.js"></script>
+<script type="text/javascript">
+//只在桌面版网页启用特效
+var windowWidth = $(window).width();
+if (windowWidth > 768) {
+    document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+}
+</script>
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yuhao&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yuhao&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Java基础入门</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                                <span class="chip bg-color">Java基础语法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-15
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    13.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    48 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="Java的特性"><a href="#Java的特性" class="headerlink" title="Java的特性"></a>Java的特性</h3><ul>
+<li><p><strong>简单性</strong></p>
+<p>为了便于系统理解，Java语法在设计时尽可能地接近C++，但Java语法是C++语法的一个“纯净”版本，剔除了C++中许多很少使用、难以理解、容易混淆的特性。不过设计者没有试图清除C++中所有的特性，例如switch语句的语法在Java中就没有改变。</p>
+<p>“简单”的另一方面是小，Java的目标之一是支持开发能够在小型机器上独立运行的软件。</p>
+</li>
+<li><p><strong>面向对象</strong></p>
+<p>面向对象设计是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上。用木匠打一个比方，“面向对象的”木匠始终首先关注的是所制作的椅子，其次才是所使用的工具；“非面向对象的”木匠主要 关注的是所用的工具。在本质上Java的面向对象能力和C++是一样的。</p>
+</li>
+<li><p><strong>分布式</strong></p>
+<p>Java有一个丰富的例程库，用于处理像HTTP和FTP之类的TCP/IP协议。Java应用程序能够通过URL打开和访问网络上的对象，其便捷程度就好像访问本地文件一样。</p>
+</li>
+<li><p><strong>健壮性</strong></p>
+<p>Java的设计目标之一在于使得Java编写的程序具有多方面的可靠性。Java特别强调进行早期的问题检查、后期动态的（运行时）检测，以及消除容易出错的情况。Java编译器能够检测许多在其它语言中仅在运行时才能检测出的问题，Java与C/C++最大的不同在于Java采用的指针模型可以消除重写内存和损坏数据的可能性。</p>
+</li>
+<li><p><strong>安全性</strong></p>
+<p>Java要适用于网络/分布式环境，为了实现这个目标，安全性颇受重视。从一开始，Java就设计成能够防范各种攻击的语言，包括：运行时堆栈溢出，这是蠕虫和病毒的常用攻击手段；破坏自己的进程空间之外的内存；未经授权读写文件。</p>
+</li>
+<li><p><strong>体系结构中立</strong></p>
+<p>编译器生成一个体系结构中立的目标文件格式，这是一种编译过的代码，只要有Java运行时系统，这些编译后的代码可以在许多处理器上运行。Java编译器通过生成与特定计算机体系结构无关的字节码指令来实现这一特性，精心设计的字节码不仅可以很容易地在任何机器上解释执行，而且还可以动态地转换成本地机器代码。</p>
+<p>解释型虚拟机指令肯定比全速运行机器指令慢很多，但虚拟机有一个选项，可以将执行最频繁的字节码序列转换成机器码，这一过程称为即时编译。Java虚拟机还有一些其他优点，可以检查指令序列的行为，从而提高安全性。</p>
+</li>
+<li><p><strong>可移植性</strong></p>
+<p>与C/C++不同，Java规范中没有“依赖具体实现”的地方，基本数据类型的大小以及有关运算的行为都有明确的说明。例如Java中的int永远是32位整数，而C/C++中可能是16位，32位，也可能是编译器开发商指定的其他任何大小。</p>
+<p>在Java中，数值类型有固定的字节数，这消除了代码移植时一个主要问题，二进制数据以固定格式进行存储和传输，消除了字节顺序的困扰，字符串则采用标准的Unicode格式存储。</p>
+<p>除了与用户界面有关的部分外，所有其他Java库确实能很好地支持平台独立性。你可以处理文件、正则表达式、XML、日期和时间、数据库、网络连接、线程等，而不用关心底层操作系统。不仅程序是可移植的，Java API往往也比原生API质量更高。</p>
+</li>
+<li><p><strong>解释型</strong></p>
+<p>Java解释器可以在任何移植了解释器的机器上直接执行Java字节码，由于连接是一个增量式且轻量级的过程，所以开发过程也变得更加快捷，更加具有探索性。</p>
+</li>
+<li><p><strong>高性能</strong></p>
+<p>尽管对解释后的字节码性能已较为满意，但在有些场合下还需要更高的性能。字节码可以（在运行时）动态地转换成对应运行这个应用地特定CPU的机器码。</p>
+<p>现在的即时编译器已经非常出色，可以与传统编译器相媲美，在某些情况下甚至超越了传统编译器，原因是它们有更多的可用信息。例如即时编译器可以监控哪些代码频繁执行，并优化这些代码以提高速度。更为复杂的优化是消除函数调用（内联）。即时编译器知道哪些类已经加载，基于当前加载的类集合，如果一个特定函数不会被覆盖就可以使用内联，必要时还可以撤销这种优化。</p>
+</li>
+<li><p><strong>多线程</strong></p>
+<p>多线程可以带来更快的交互响应和实时行为。在当时，Java是第一个支持并发程序设计的主流语言。</p>
+</li>
+<li><p><strong>动态性</strong></p>
+<p>从很多方面看，Java相比C/C++更具有动态性，它能够适应不断发展的环境。库中可以自由地添加新方法和实例变量，而对客户端却没有任何影响。在Java中找出运行时类型信息十分简单。</p>
+</li>
+</ul>
+<hr>
+<h3 id="Java发展史"><a href="#Java发展史" class="headerlink" title="Java发展史"></a>Java发展史</h3><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>年份</th>
+<th>新语言特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>1996</td>
+<td>语言本身</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>1997</td>
+<td>内部类</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>1998</td>
+<td>strictfp修饰符</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>2000</td>
+<td>无</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>2002</td>
+<td>断言</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2004</td>
+<td>泛型类、for each循环、可变参数、自动装箱、元数据、枚举、静态导入</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2006</td>
+<td>无</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2011</td>
+<td>基于字符串的选择语句、菱形运算符、二进制字面量、异常增强处理</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2014</td>
+<td>lambda表达式、包含默认方法的接口、流和日期/时间库</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2017</td>
+<td>模块、其他的语言和类库增强</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="基本程序设计结构"><a href="#基本程序设计结构" class="headerlink" title="基本程序设计结构"></a>基本程序设计结构</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>Java是一种强类型语言，因此必须为每一个变量声明一种类型。在Java中一共有8种基本类型，其中有4种整形、2种浮点类型、1种字符类型char和1种用于表示真值的boolean类型。</p>
+<ul>
+<li><p>整形</p>
+<p>整形用于表示没有小数部分的数值，允许是负数，Java提供了4种整形。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>1字节</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>-32767~32767</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4字节</td>
+<td>-2147483648~2147483647（刚刚超过20亿）</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td>-9223372036854775808~9223372036854775807</td>
+</tr>
+</tbody></table>
+<p>int类型最常用，数量很大时需要使用long。byte和short类型主要用于特定场合，例如底层的文件处理或者存储空间很宝贵时的大数组。</p>
+<p>在Java中，整形的范围与运行Java代码的机器无关，这就解决了软件从一个平台移植到另一个平台，或者在同一个平台的不同操作系统之间进行移植给程序员带来的诸多问题。与此相反，C/C++程序会针对不同处理器选择最为高效的整形，这样就会造成在32位处理器上运行的程序在16位系统上运行时却发生整数溢出。由于Java程序必须保证在所有机器上都得到相同的运行结果，所以各种数据类型的取值范围必须固定。</p>
+<p>长整型数值有一个后缀L或者l，十六进制数有一个前缀0x或0X，八进制有一个前缀0，很显然八进制数容易混淆所以尽量不要使用八进制常数。</p>
+<p>从Java7开始，加上前缀0b或0B就可以表示二进制数，还可以为数字字面量加下划线，例如1_000，这些下划线只是为了易读性，编译器会去除这些下划线。</p>
+</li>
+<li><p><strong>浮点类型</strong></p>
+<p>浮点类型用于表示有小数部分的数值，Java中有2种浮点型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>大约±3.40282347E+38F</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>大约±1.79769313486231570E+308</td>
+</tr>
+</tbody></table>
+<p>double这种类型的精度是float的2倍，因此也称为双精度数值，很多情况下float类型的精度（6~7位有效数字）并不能满足需求，只有很少的情况下适合float，例如需要单精度的库或者需要存储大量数据时。</p>
+<p>float类型的数值有一个后缀F或f，如果没有后缀的浮点数总认为是double类型，当然也可以在浮点数值后面添加后缀D或d。</p>
+<p>常量Double.POSITIVE_INFINITY、DoubleNEGATIVE_INFINITY和Double.NaN分别表示正无穷大、负无穷大和NaN（不是一个数字）。</p>
+<p>浮点数值不适用于无法接受舍入误差的金融计算，舍入误差的主要原因是浮点数值采用二进制系统表示，在二进制系统中无法精确地表示分数。如果在数值计算中不允许有任何舍入误差就应该使用BigDecimal类。</p>
+<p>可移植性是Java语言的设计目标之一，无论在哪个虚拟机上执行，同一运算应该得到同样的结果。对于浮点数而言，实现这样的可移植性是十分困难的。Java虚拟机的最初规范要求所有中间计算必须进行截断，之后改进为默认情况下允许对中间计算采用扩展精度，但是对于使用了strictfp关键字标记的方法必须使用严格的浮点计算。</p>
+</li>
+<li><p><strong>char类型</strong></p>
+<p>char类型（2字节）原本用于表示单个字符，不过现在情况有所变化，有些Unicode字符需要1个char值描述，有些Unicode字符需要2个char值描述。char类型的值可以表示为16进制值，范围从\u0000到\uFFFF。</p>
+<p>一些特殊字符的转义序列：</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>名称</th>
+<th>Unicode值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\b</td>
+<td>退格</td>
+<td>\u0008</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表</td>
+<td>\u0009</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换号</td>
+<td>\u000a</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>\u000d</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+<td>\u0022</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+<td>\u0027</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜杠</td>
+<td>\u005c</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>boolean类型</strong></p>
+<p>boolean类型（1字节）有两个值：false和true，用来判断逻辑条件。整型值和布尔值之间不能相互转换。</p>
+</li>
+</ul>
+<hr>
+<h3 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h3><ul>
+<li><p><strong>变量</strong></p>
+<p>变量名必须是一个以字母开头并由字母或数字构成的序列，与大多数语言相比，Java中的字母和数字的范围更大，字母包括’A’<del>‘Z’，’a’</del>‘z’，’_’，’$’或在某种语言中表示字母的任何Unicode字符。同样数字也包括’0’~’9’和在某种语言中表示数字的任何Unicode字符。不可使用空格，并且变量名是大小写敏感的，长度基本没有限制。</p>
+<p>从Java10开始，对于局部变量，如果可以从变量的初始值推断出它的类型，就不再需要声明它的类型，只需要使用关键字var而无需指定类型。</p>
+</li>
+<li><p><strong>常量</strong></p>
+<p>利用关键字final指示常量，final表示这个变量只能被赋值一次，一旦赋值之后就不能再更改了，习惯上变量名使用全大写。如果希望某个常量可以在一个类的多个方法使用，通常将这些常量称为类常量，使用关键字static final修饰。</p>
+</li>
+</ul>
+<hr>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
+<li><p><strong>算术运算符</strong></p>
+<p>当参与/运算的两个操作数都是整数时表示整数除法，否则表示浮点除法。整数被0除会产生一个异常，浮点数被0除会得到无穷大或NaN结果。</p>
+</li>
+<li><p><strong>数学函数</strong></p>
+<p>计算平方根：<code>Math.sqrt(double a)</code></p>
+<p>计算幂运算：<code>Math.pow(doube a,double b)</code></p>
+<p>如果计算溢出，数学运算符只是返回一个错误结果而不做任何提醒，但如果是Math中的方法就会生成异常。</p>
+</li>
+<li><p><strong>数值类型转换</strong></p>
+<p>无信息丢失的转换：byte-&gt;short、short-&gt;int、char-&gt;int、int-&gt;long、int-&gt;double、float-&gt;double</p>
+<p>可能有精度损失的转换：int-&gt;float、long-&gt;float、long-&gt;double</p>
+<p>当用二元运算符连接两个值时，先要将两个操作数转换为同一种类型再进行计算，如果两个操作数有一个是double类型，另一个操作数就转为double；否则如果有一个是float类型，另一个操作数就转为float；否则如果有一个操作数是long类型，另一个操作数就转为long；否则两个操作数都转为int。</p>
+</li>
+<li><p><strong>强制类型转换</strong></p>
+<p>可能丢失信息的转换要通过强制类型转换完成，如果想对浮点数进行舍入运算，以便得到最接近的整数，可以使用Math.round(float/double a)方法。</p>
+</li>
+<li><p><strong>结合赋值和运算符</strong></p>
+<p>可以在赋值时使用二元运算符，例如<code>x+=4</code>，等价于<code>x=x+4</code>，如果运算符右边的值类型和左边不一致就会发生强制类型转换，例如x是int类型，<code>x+=3.5</code>等价于<code>x=(int)(x+3.5)</code>。</p>
+</li>
+<li><p><strong>自增和自减运算符</strong></p>
+<p>自增和自减运算符改变的是变量的值，不能应用于数值本身，因此1++不是一个合法的语句。</p>
+<p>后缀和前缀形式都会使变量值加1或减1，不同的是前缀形式会先完成运算，后缀形式会先使用变量原来的值。</p>
+</li>
+<li><p><strong>关系和boolean运算符</strong></p>
+<p>Java沿用了C++的做法，使用&amp;&amp;表示逻辑“与”运算符，使用||表示逻辑”或”运算符，感叹号！就是逻辑非运算符。&amp;&amp;和||是按照”短路”方式来求值的，如果第一个操作数已经能够确定表达式的值，第二个操作数就不必计算了。</p>
+</li>
+<li><p><strong>位运算符</strong></p>
+<p>位运算符包括<code>&amp;</code>（与）、<code>|</code>（或）、<code>^</code>（异或）、<code>~</code>（非）。</p>
+<p><code>&gt;&gt;</code>和<code>&lt;&lt;</code>可以将位模式左移或右移，<code>&gt;&gt;&gt;</code>会用0填充高位，<code>&gt;&gt;</code>会用符号位填充高位，不存在<code>&lt;&lt;&lt;</code>运算符。移位运算符的右操作数要完成模32的运算（除非左操作数是long类型，这种情况下需要模64），例如1&lt;&lt;35的值等于1&lt;&lt;3或者8。</p>
+</li>
+<li><p><strong>括号与运算符级别</strong></p>
+<p>不使用括号就按照运算符优先级次序计算，同一级别的运算符按照从左到右的次序计算（右结合运算符除外）。</p>
+</li>
+</ul>
+<hr>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>从概念上讲，Java字符串就是Unicode字符序列。Java没有内置的字符串类型，而是在标准Java类库中提供了一个与定义类，叫做String，每个用双引号引起来的字符串都是String类的一个实例。</p>
+<ul>
+<li><p><strong>子串</strong></p>
+<p>String类的substring方法可以从一个较大的字符串提取出一个字串。</p>
+<p>substring方法的第一个参数是要复制的第一个位置，第二个参数是不想复制的第一个位置，例如substring(0,3)复制了0，1和2，不包括3。</p>
+<p>substring的工作方式有一个优点：容易计算字串的长度，substring(a,b)的长度为b-a。</p>
+</li>
+<li><p><strong>拼接</strong></p>
+<p>与绝大多数程序设计语言一样，Java语言允许使用+号连接（拼接）两个字符串。</p>
+<p>当将一个字符串与一个非字符串的值拼接起来时，后者会转换成字符串（任何一个Java对象都可以转换成字符串）。例如<code>int age=13</code>，<code>String rating=&quot;PG&quot;+age</code>，将rating设置为”PG13”。</p>
+<p>如果需要把多个字符串放在一起，用一个界定符分隔，可以使用静态方法join，例如<code>String str=String.join(&quot;/&quot;,&quot;S&quot;,&quot;M&quot;,&quot;L&quot;)</code>将str设置为”S/M/L”。</p>
+<p>在Java11中，还提供了repeart方法，例如<code>String str=&quot;Java&quot;.repeat(3)</code>将str的值设为”JavaJavaJava”。</p>
+</li>
+<li><p><strong>不可变字符串</strong></p>
+<p>String类没有提供修改字符串中某个字符的方法，由于不能修改Java字符串中的单个字符，所以Java文档中将String类对象称为不可变的，不过可以修改字符串变量，让它引用另一个字符串，就如同可以让原本存3的数值变量改成存放4一样。</p>
+<p>通过拼接两个字符串来创建一个新字符串的效率确实不高，但是不可变字符串有一个优点：编译器可以让字符串共享。可以想象将各种字符串存放在公共的存储池中，字符串变量指向存储池中相应的位置，如果复制一个字符串变量，原始字符串与复制的字符串共享相同的字符。Java认为共享带来的高效率远胜于提取字串、拼接字符串所带来的低效率。</p>
+</li>
+<li><p><strong>检查字符串是否相等</strong></p>
+<p>可以使用equals方法比较两个字符串的值是否相等，如果不区分大小写，可以使用equalsIgnoreCase方法。</p>
+<p>==运算符只能确定两个字符串是否存放在同一个位置上，如果虚拟机始终将相同的字符串共享，就可以使用==运算符检测是否相等。但实际上只有字符串字面量是共享的，而+或substring等操作得到的字符串并不共享，不要使用==运算符测试字符串的相等性。</p>
+</li>
+<li><p><strong>空串与Null串</strong></p>
+<p>空串””是长度为0的字符串，空串是一个Java对象，有自己的串长度(0)和内容(空)，不过String变量还可以存放一个特殊的值，名为null，表示目前没有任何对象与该变量关联。</p>
+</li>
+<li><p><strong>String类常用API</strong></p>
+<p><code>int compareTo(String other)</code>:按字典顺序比较，在other之前返回负数，之后返回正数，相等返回0。</p>
+<p><code>boolean equals(String other)</code>:比较两个字符串值是否相等。</p>
+<p><code>boolean startWith(String prefix)</code>:是否以prefix开头。</p>
+<p><code>boolean endsWith(String suffix)</code>:是否以suffix结尾。</p>
+<p><code>int indexOf(String str[,int fromIndex])</code>:返回与字符串str匹配的第一个子串的开始位置，从索引0或者fromIndex开始，不存在返回-1。</p>
+<p><code>int indexOf(int cp[,int fromIndex])</code>:返回与码点cp匹配的第一个子串的开始位置，从索引0或者fromIndex开始，不存在返回-1。</p>
+<p><code>int length()</code>:返回字符串代码单元的长度。</p>
+<p><code>String replace(CharSequence old,CharSequence new)</code>:返回新字符串，用new代替所有的old。</p>
+<p><code>String substring(int begin[,int end])</code>:返回新字符串，包含原始字符串从begin到末尾或end-1的所有代码单元。</p>
+<p><code>String trim()</code>:返回一个新字符串，删除原始字符串头部和尾部小于等于U+0020的字符。</p>
+</li>
+<li><p><strong>构建字符串</strong></p>
+<p>有时候需要由较短的字符串构建字符串，如果采用字符串拼接的方式来达到目的，效率会比较低。每次拼接字符串时都会构建一个新的String对象，既耗时又浪费空间。可以使用StringBuilder来解决该问题。</p>
+<p>StringBuilder在Java5中引入，这个类的前身是StringBuffer，它的效率低但是线程安全。如果所有字符串编辑操作都在单个线程中执行（通常都是这样），则应该使用StringBuilder。</p>
+</li>
+</ul>
+<hr>
+<h3 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h3><ul>
+<li><p><strong>读取输入</strong></p>
+<p>读取标准输入流首先需要构造一个与标准输入流关联的Scanner对象，<code>nextLine()</code>方法将读取一整行输入；如果想要读取一个单词（以空白符作为分隔符），可以使用<code>next()</code>方法；如果想要读取一个整数，可以使用<code>nextInt()</code>方法；如果想要读取下一个浮点数就是要<code>nextDouble()</code>方法；<code>hasNext()</code>可以检测输入中是否还有其他单词，<code>hashNextInt()</code>和<code>hashNextDouble()</code>检测是否还有下一个表示整数或浮点数的字符序列。</p>
+</li>
+<li><p><strong>格式化输出</strong></p>
+<p>可以使用printf方法实现格式化输出，例如x的值为10000.0/3.0调用printf(“%8.2f”,x)将输出<code> 3333.33</code>，8代表输出的字符宽度，精度是小数点后2个字符，由于3333.33只有7个字符宽，所以还会打印一个前导的空格。</p>
+<p>每一个以%后面的转换符都说明了要格式化的数值类型，除了f表示浮点数，还有s表示字符串，d表示十进制整数，c表示字符，b表示布尔等。除了printf也可以用静态方法<code>String.format</code>创建一个格式化的字符串。</p>
+</li>
+</ul>
+<hr>
+<h3 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h3><p>与任何程序设计语言一样，Java使用条件语句和循环结构确定控制流程。</p>
+<ul>
+<li><p><strong>块作用域</strong></p>
+<p>块（即复合语句）是指由若干条Java语句组成的语句，并用一对大括号括起来。块确定了变量的作用域，一个块可以嵌套在另一个块中。不能在嵌套的两个块中声明同名的变量。</p>
+</li>
+<li><p><strong>条件语句</strong></p>
+<p>if中的条件为true时会执行对应语句，else是可选的，总是与最近的if构成一组。</p>
+</li>
+<li><p><strong>for循环</strong></p>
+<p>for循环语句是支持迭代的一种通用结构，由一个计数器或类似的变量控制迭代次数，每次迭代后这个变量将会更新。for语句的第1部分通常是对计数器初始化，第2部分给出每次新一轮循环执行前要检测的循环条件，第3部分指定如何更新计数器。</p>
+<p>for语句内部定义的变量，不能在循环体之外使用。因此如果希望在for循环体之外使用循环计数器的最终值，就要确保这个变量在循环之外声明。</p>
+</li>
+<li><p><strong>while循环</strong></p>
+<p>while语句在最前面检测循环条件，因此循环体中的代码有可能一次都不执行。如果希望循环体至少执行一次可以使用do-while循环，这种循环语句先执行语句再检测循环条件。</p>
+</li>
+<li><p><strong>多重选择：switch语句</strong></p>
+<p>在处理多个选项时，使用if/else会显得有些笨拙，Java有一个和C/C++完全相同的switch语句。switch语句将从选项值相匹配的case标签开始执行，直到遇到break语句，或者执行到switch语句的结束处为止。如果没有匹配的case语句而有default语句就执行这个default子句。</p>
+<p>case标签可以是char、byte、short、或int的常量表达式，枚举常量，从Java7开始，还可以支持字符串字面量。当使用枚举常量时，不必在每个标签中指明枚举名，可以由switch的表达式值推导得出。</p>
+</li>
+<li><p><strong>中断控制流程的语句</strong></p>
+<p>不带标签的break语句，和用于退出swicth语句的break语句一样，可以用于直接退出循环。</p>
+<p>还可以使用带标签的break语句，可以用于跳出多重循环的嵌套语句。标签必须放在最外层循环之前，并且紧跟一个冒号。</p>
+<p>continue语句将中断正常的控制流程，将控制转移到最内层循环的首部，如果continue用于for循环，就可以跳到for循环的更新部分，还有一种带标签的continue，将跳到与标签匹配的循环的首部。</p>
+</li>
+</ul>
+<hr>
+<h3 id="大数"><a href="#大数" class="headerlink" title="大数"></a>大数</h3><p>如果基本的整数和浮点数精度不能够满足需求，那么可以使用java.math包中的两个很有用的类：BigInteger和BigDecimal，这两个类可以处理包含任意长度数字序列的数值。BigInteger类实现任意精度的整数运算，BigDecimal类实现任意精度的浮点数运算。</p>
+<p>使用静态的<code>valueOf</code>方法可以将普通的数值转换为大数，对于更大的数，可以使用一个带字符串参数的构造器。不能使用算术运算符处理大数，例如+和*，而需要大数类的add和multiply方法。除此之外的其他方法：substract求差，divide求商，mod求余，sqrt求平方根，compareTo比较两个数。</p>
+<hr>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<li><p><strong>声明</strong></p>
+<p>数组是一种数据结构，用来存储同一类型值的集合。通过一个整形下标（index，或称索引）可以访问数组中的每一个值。在声明数组变量时，需要指出数组类型和数组变量的名字。</p>
+<p>一旦创建了数组就不能再改变它的长度，如果程序运行中需要经常扩展数组的大小，就应该使用另一种数据结构：数组列表ArrayList。</p>
+</li>
+<li><p><strong>访问元素</strong></p>
+<p>创建一个数字数组时，所有元素都初始化为0，boolean数组的元素会初始化为false，对象数组的元素则初始化为一个特殊值null，表示这些元素还未存放任何对象。</p>
+<p>Java可以使用增强for循环来依次处理数组（或者其他元素集合）中的每一个元素，而不必考虑指定下标值。可以使用的必须是一个数组或者一个实现了Iterable接口的类对象。如果想打印数组中的所有值可以调用静态的<code>Arrays.toString</code>方法。</p>
+</li>
+<li><p><strong>数组拷贝</strong></p>
+<p>如果希望将一个数组的所有值拷贝到一个新的数组中去，可以使用<code>Arrays.copyOf(int[] arr,int len)</code>方法，第2个参数是新数组的长度，这个方法通常用于增加数组的大小，如果数组元素是数值型那么额外的元素将被赋值0，如果数组元素是布尔型则赋值false。相反如果长度小于原始数组的长度，则只拷贝前面的值。这个方法实际上调用了<code>System.arraycopy</code>方法，效率一般。</p>
+<p>使用<code>System.arraycopy(Object src,int srcPos,Object dest,int destPos,int length)</code>拷贝数组，前2个参数是原数组和拷贝位置，之后2个参数是目标数组和拷贝位置，最后一个参数代表拷贝长度，这是一个本地方法，效率最高，尤其在数组很大时尤为明显。也可以使用for循环和clone方法拷贝数组，for循环适合于小数组的拷贝，数组越大效率越低。</p>
+</li>
+<li><p><strong>数组排序</strong></p>
+<p>可以使用Arrays类中的sort方法，这个方法使用了优化的快速排序，快速排序算法对于大多数数据集合来说都是效率比较高的。</p>
+</li>
+</ul>
+<hr>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>面向对象程序涉设计（OOP）是当今主流的程序设计泛型，面向对象的程序是由对象组成的，每个对象包含对用户公开的特定部分和隐藏的实现部分。传统的结构化程序通过设计一系列算法求解问题，首先考虑的是如何操作数据，然后再考虑组织数据的结构，而面向对象中数据是第一位的，然后再考虑操作数据的算法。对于规模较小的问题，面向过程开发比较理性，面向对象更加适合解决规模较大的问题。</p>
+<hr>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类是构造对象的模板或蓝图，由类构造对象的过程称为创建类的实例。</p>
+<p>封装是处理对象的一个重要概念，从形式上看封装就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为实例字段，操作数据的过程称为方法。作为一个类的实例，特定对象都有一组特定的实例字段值，这些值的集合就是这个对象的当前状态。</p>
+<p>封装给予了对象黑盒特征，这是提高重用性和可靠性的关键。这意味着一个类完全可以改变数据存储的方式，只要仍使用同样的方法操作数据，其他对象就不会知道也不用关心这个类的变化。</p>
+<p>类之间的关系：</p>
+<ul>
+<li>依赖，即uses-a关系，如果一个类的方法使用或操纵另一个类的对象，我们就说一个类依赖于另一个类。</li>
+<li>聚合，即has-a关系，即一个对象包含另一个对象。</li>
+<li>继承，即is-a关系，表示一个更特殊的类与一个更一般的类之间的关系。</li>
+</ul>
+<hr>
+<h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><p>Java语言中要使用构造器用来构造新实例，构造器是一种特殊的方法，用来构造并初始化对象。</p>
+<p>构造器的名字与类名相同，想要构造一个新实例需要在构造器前加上new操作符。在Java中，任何对象变量的值都是对存储在另一个地方的某个对象的引用，new操作符返回值也是一个引用。</p>
+<p>每个类可以有一个以上的构造器，构造器可以0或多个参数，构造器没有返回值，构造器总是伴随new操作符一起使用。</p>
+<p><strong>构造器可以重载但不可以重写。</strong> 重写是指子类重写父类方法，子类与父类的类名不一样，谈不上重写。</p>
+<p><strong>重写发生在运行时，重载发生在编译时。</strong></p>
+<hr>
+<h3 id="静态字段和方法"><a href="#静态字段和方法" class="headerlink" title="静态字段和方法"></a>静态字段和方法</h3><p>如果将一个字段定义为static，每个类只有一个这样的字段，而对于非静态的实例字段，每个对象都有自己的一个副本。</p>
+<p>静态方法是用static修饰的方法，静态方法不在对象上指向，可以认为静态方法是没有this参数的方法（在一个非静态方法中，this参数指示这个方法的隐式参数）。可以使用对象调用静态方法，但容易造成混淆，建议使用类名调用。</p>
+<p>可以使用静态方法的情况：</p>
+<ul>
+<li>方法不需要方法对象的状态，因为它所需要的所有参数都通过显示参数提供。</li>
+<li>方法只需要访问类的静态字段。</li>
+</ul>
+<p>静态方法还有一种常见用途，就是使用静态工厂方法来构造对象。</p>
+<hr>
+<h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><p>按值调用表示方法接收的是调用者提供的值，按引用调用表示方法接收的是调用者提供的变量地址。方法可以修改按引用传递的变量的值，而不能修改按值传递的变量的值。Java中总是采用按值调用，也就是说方法得到的是所有参数值的一个副本，方法不能修改传递给它的任何参数变量的内容，实际上对象引用是按值传递的。</p>
+<hr>
+<h3 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h3><ul>
+<li><p><strong>重载</strong></p>
+<p>如果多个方法具有相同的名字、不同的参数，便出现了重载。如果编译器找不到匹配的参数就会产生编译时错误，查找匹配的过程叫做重载解析。</p>
+<p>Java允许重载任何方法，要完整描述一个方法需要指定方法名和参数类型，这叫做方法的签名。返回类型不是方法签名的一部分，因此不能有两个名字相同、参数类型也相同却有不同返回类型的方法。</p>
+</li>
+<li><p><strong>默认字段初始化</strong></p>
+<p>如果在构造器中没有显示地为字段设置初值，那么就会被自动赋为默认值：数值为0、布尔值为false、对象引用为null。</p>
+<p>方法中的局部变量必须明确地初始化，不能不设置初始值。</p>
+</li>
+<li><p><strong>无参构造器</strong></p>
+<p>很多类都包含无参构造器，由无参构造器创建对象时，对象的状态会设置为适当的默认值。如果没有为一个类编写构造器，就为为你提供一个无参构造器，这个构造器将所有字段设置为默认值。</p>
+<p>如果类中至少提供了一个构造器，但是没有提供无参构造器，那么构造对象时就不能使用无参构造器。</p>
+</li>
+<li><p><strong>调用构造器</strong></p>
+<p>关键字this指代一个方法的隐式参数，除此之外，还可以使用this来调用同一个类的其他构造器。</p>
+</li>
+<li><p><strong>初始化块</strong></p>
+<p>除了在构造器中赋值和在声明中赋值，还可以使用初始化块，即类中的代码块。</p>
+<p>构造器调用的具体处理步骤：</p>
+<ul>
+<li>如果构造器的第一行调用了另一个构造器，则基于所提供的参数执行第二个构造器。</li>
+<li>否则将所有数据字段初始化为默认值，按照在类声明中出现的顺序，执行所有字段初始化方法和初始化块。</li>
+<li>执行构造器主体代码。</li>
+</ul>
+</li>
+<li><p><strong>finalize方法</strong></p>
+<p>该方法在垃圾回收器清理对象之前调用，不要使用该方法来回收资源，因为并不能知道它什么时候调用而且它已被废弃。</p>
+</li>
+</ul>
+<hr>
+<h3 id="类设计技巧"><a href="#类设计技巧" class="headerlink" title="类设计技巧"></a>类设计技巧</h3><ul>
+<li>保证数据私有</li>
+<li>一定要对数据进行初始化</li>
+<li>不要在类中使用过多基本类型</li>
+<li>不是所有字段都需要单独的字段访问器和字段更改器</li>
+<li>分解有过多职责的类</li>
+<li>类名和方法名要能体现它们的职责</li>
+<li>优先使用不可变类</li>
+</ul>
+<hr>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="子类和父类"><a href="#子类和父类" class="headerlink" title="子类和父类"></a>子类和父类</h3><p>关键字extends表示正在构造的新类派生于一个已存在的类，这个已存在的类称为超类、基类或父类；新类称为子类、派生类或孩子类。Java中不支持多继承。</p>
+<ul>
+<li><p><strong>方法重写</strong></p>
+<p>子类可以重写父类的方法，也可以通过关键字super调用父类的方法。</p>
+<p>重写方法的方法签名必须和父类一致，返回值小于等于父类方法，抛出的异常类型小于等于父类方法，访问修饰符大于等于父类方法。</p>
+</li>
+<li><p><strong>子类构造器</strong></p>
+<p>可以使用super调用父类的构造器，使用super调用构造器的语句必须是子类构造器的第一条语句。</p>
+<p>如果子类的构造器没有显式地调用父类构造器，将自动调用父类无参构造器。如果父类没有无参构造器，在子类的构造器又没有显式调用父类的其他构造器，Java编译器就会报告错误。</p>
+<p>this的两个作用：①隐式参数的引用。②调用该类的其他构造器。</p>
+<p>super的两个作用：①调用父类的方法。②调用父类的构造器。</p>
+</li>
+<li><p><strong>多态</strong></p>
+<p>在Java中对象变量是多态的，既可以引用本类型的对象，也可以引用子类的对象。</p>
+<p>方法调用的过程：</p>
+<ul>
+<li>编译器查看对象的声明类型和方法名。</li>
+<li>编译器确定方法调用中提供的参数类型，这个过程称为重载解析。</li>
+<li>如果是private、static或final修饰的方法或者构造器，编译器可以准确地知道要调用哪个方法，这称为静态绑定，与此对应地是如果要调用的方法依赖于隐式参数的实际类型，那么必须在运行时动态绑定。</li>
+<li>程序运行并采用动态绑定调用方法时，虚拟机必须调用引用对象的实际类型对应的方法。</li>
+</ul>
+<p>每次调用都要完成时间开销很大的搜素，因此虚拟机预先为每个类计算了一个方法表，其中列出了所有方法的签名和要调用的实际方法，当真正调用方法时虚拟机仅查找这个表就可以了。</p>
+<p>动态绑定有一个重要特性：无须对现有的代码进行修改就可以对程序进行扩展。</p>
+</li>
+<li><p><strong>阻止继承：final类和方法</strong></p>
+<p>不允许扩展的类称为final类，不允许子类重写的方法称为final方法。</p>
+<p>将类或方法声明为final的主要原因是：确保它们不会在子类中改变语义。</p>
+</li>
+<li><p><strong>强制类型转换</strong></p>
+<p>将一个类强制转换成另外一个类型的过程称为强制类型转换。</p>
+<p>进行强制类型转换的唯一原因是：要在暂时忽视对象的实际类型之后使用对象的全部功能。将子类的引用赋值给父类变量，编译器是允许的。但如果将一个父类引用赋值给子类变量，就必须进行强制类型转换，这样才能通过运行时的检查。</p>
+<p>只能在继承层次内使用强制类型转换，并且强制转换前应该是有instance of进行检查。</p>
+</li>
+<li><p><strong>抽象类</strong></p>
+<p>使用abstract修饰抽象类，抽象类更具有一般性。</p>
+<p>抽象类不能实例化，但抽象类的非抽象子类可以实例化，一个抽象类对象变量只能引用非抽象子类对象。</p>
+<p>抽象类可以不含抽象方法，但有抽象方法的类一定是抽象类。</p>
+<p>扩展抽象类有两种选择：</p>
+<ul>
+<li>在子类中保留抽象类中的部分或所有抽象方法，将子类也标记为抽象类。</li>
+<li>实现全部方法，子类是非抽象类。</li>
+</ul>
+</li>
+<li><p><strong>受保护访问</strong></p>
+<p>如果希望限制父类的某个方法只允许子类访问，或者希望允许子类的方法能访问父类的某个字段，就可以将这些类方法或字段声明为protected。</p>
+<p>Java中有4个访问修饰符：①public，对外部完全可见。②protected，对本包和所有子类可见。③默认，不需要修饰符，对本包可见。④private，仅对本类可见。</p>
+</li>
+</ul>
+<hr>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p>Object类是所有类的父类，可以使用Object类型的变量引用任何类型的对象。</p>
+<ul>
+<li><p><strong>equals方法</strong></p>
+<p>Object类中的equals方法用于检测一个对象是否等于另一个对象，它将确定两个对象的引用是否相等。</p>
+<p>当使用equals比较字符串和基本数据数据类型时，比较的是值而不是引用，因为重写了equals方法。</p>
+<p>如果要比较两个数组的值，可以使用Arrays.euqals方法。</p>
+</li>
+<li><p><strong>hashCode方法</strong></p>
+<p>哈希值是由对象导出的一个整型值，哈希值是没有规律的，两个不同的对象调用hashCode方法，结果基本不会相同。每个对象都有一个默认的哈希值，由对象的存储地址得出，而字符串的哈希值由内容导出。</p>
+<p>如果重写了equals方法，就必须为可能插入HashMap或HashSet的对象重写hashCode方法。如果equals方法返回true，hashCode就必须相同；但是如果hashCode相同，equals未必相等。</p>
+</li>
+<li><p><strong>toString方法</strong></p>
+<p>它返回表示对象值的一个字符串，直接打印某个对象就是打印了它的toString方法结果。如果要打印数组的内容可以使用Arrays.toString方法，如果是多维数组可以使用Arrays.deepToString方法。</p>
+</li>
+</ul>
+<hr>
+<h3 id="对象包装器和自动拆装箱"><a href="#对象包装器和自动拆装箱" class="headerlink" title="对象包装器和自动拆装箱"></a>对象包装器和自动拆装箱</h3><p>所有的基本类型都有一个与之对应的类，例如int对应Integer类，这些类称为包装器。这些包装器类见名知意，包括Short、Byte、Integer、Long、Float、Double、Character和Boolean（前6个派生自公共父类Number）。</p>
+<p>包装器类是不可变的，一旦构造了包装器，就不允许更改包装器在其中的值，并且包装器类是final类，因此不能被继承。将一个基本类型的值赋给包装器类会自动将其包装为一个包装器类的对象，这叫做自动装箱，将一个包装器类对象赋值给一个基本类型变量时，就会自充拆箱。</p>
+<p>如果要比较包装器类的值要使用equals方法，如果使用==会比较对象的地址。</p>
+<p>常用API：</p>
+<ul>
+<li><code>int intValue()</code>：将Integer对象作为int值返回</li>
+<li><code>static String toString(int i)</code>：将i的十进制字符串形式返回</li>
+<li><code>static String toString(int i,int radix)</code>：将i的radix进制字符串形式返回</li>
+<li><code>static int parseInt(String s)</code>：将字符串s表示的整数转换为10进制整数</li>
+<li><code>static int parseInt(String s,int radix)</code>：将字符串s表示的整数转换为radix进制</li>
+<li><code>static Integer valueOf(String s)</code>：将parseIntt(String s)的结果封装为包装器对象</li>
+<li><code>static Integer valueOf(String s,int radix)</code>：将parseIntt(String s,int radix)的结果封装为包装器对象</li>
+</ul>
+<hr>
+<h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><p>在比较两个枚举类型的值时，不需要调用equals，直接使用==就可以了。</p>
+<p>枚举的构造器总是私有的，如果将enum的构造器声明为public或protected，就会报语法错误。所有枚举类型都是Enum类的子类。</p>
+<p>常用API：</p>
+<ul>
+<li><code>static Enum valueOf(Class enumClass,String name)</code>：返回给定类中有指定名字的枚举常量。</li>
+<li><code>String toString()</code>：返回枚举常量名。</li>
+<li><code>int ordinal()</code>：返回枚举常量在enum声明中的为止，从0开始计数。</li>
+<li><code>int compareTo(E other)</code>：如果枚举常量出现在other之前，返回一个负整数；如果this==other，返回0；否则返回一个正整数。枚举常量出现次序在enum声明中给出。</li>
+</ul>
+<hr>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>反射库提供了一个丰富且精巧的工具集，可以用来编写能够动态操纵Java代码的程序。能够分析类能力的程序称为反射，反射机制的功能很强大，主要包括：</p>
+<ul>
+<li><strong>在运行时分析类的能力</strong>。</li>
+<li><strong>在运行时检查对象</strong>。</li>
+<li><strong>实现泛型数组操作代码。</strong></li>
+<li><strong>利用Method对象。</strong></li>
+</ul>
+<p>在程序运行期间，Java运行时系统始终为所有对象维护一个运行时类型标识，这个信息会跟踪每个对象所属的类，虚拟机利用运行时类型信息选择要执行的正确方法。也可以使用一个特殊的Java类方法这些信息，保存这些信息的类名为Class。</p>
+<p>获取Class对象的三种方法：</p>
+<ul>
+<li>使用Object类中的<code>getClass()</code>方法，该方法返回一个Class类型的实例。</li>
+<li>使用静态方法<code>Class.forName(String className)</code>获得类名对应的Class对象。</li>
+<li>如果T是Java类型，T.class将代表匹配的类对象。</li>
+</ul>
+<p>Class类实际上是一个泛型类，例如Student.class的类型是<code>Class&lt;Student&gt;</code>，虚拟机为每个类型管理一个唯一的Class对象，因此可以利用==运算符实现两个类对象的比较。</p>
+<p>如果有一个Class类型的对象，可以使用它来构造类的实例。调用getConstructor()方法将得到一个Constructor类型的对象（相当于获取该类的无参构造器），然后使用newInstance方法来构造一个实例。如果这个类没有无参构造器就会抛出一个异常。</p>
+<ul>
+<li><p><strong>利用反射分析类的能力</strong></p>
+<p>java.lang.reflect包中有三个类Field、Method和Constructor分别用于描述类的字段、方法和构造器。这三个类都有一个getName()方法，用来返回字段、方法或构造器的名称。Field类有一个getType方法，用来返回描述字段类型的一个对象，这个对象的类型同样是Class。</p>
+<p>Method和Constructor类有报告参数类型的方法，Method类还有一个报告返回类型的方法。这三个类都有一个getModifiers方法，它将返回一个整数，用不同的0/1位描述所使用的修饰符，如public和static。另外还可以使用Modifier类的静态方法分析getModifiers返回的这个整数，例如可以使用isPublic、isPrivate或isFinal判断方法或构造器是否是public、private、final修饰的。</p>
+<p>Class类中的getFields、getMethods和getConstructors方法将分别返回这个类支持的公有字段、方法和构造器的数组，其中包括父类的公共成员（父类字段和方法可以获得，但不包含父类公有构造器）。</p>
+<p>Class类中的getDeclaredFields、getDeclaredMethods和getDeclaredConstructors方法将分别返回这个类中声明的全部字段、方法和构造器的数组，其中包括私有成员、包成员和受保护成员，但不包括父类成员。</p>
+</li>
+<li><p><strong>在运行时分析对象</strong></p>
+<p>反射机制的默认行为受限于Java的访问控制，不过可以调用Field、Method或Constructor对象的setAccessible方法覆盖Java的访问控制。</p>
+</li>
+<li><p><strong>调用方法和构造器</strong></p>
+<p>Method类有一个invoke方法，可以调用包装在当前Method对象中的方法，可以使用方法名获取对应的Method对象。类似的，可以使用构造器的参数类型获取对应的构造器对象，然后利用newInstance方法构建对象实例。</p>
+</li>
+<li><p><strong>注解</strong></p>
+<ul>
+<li>注解是一种标记，可以使类或接口附加额外的信息，是帮助编译器和JVM完成一些特定功能的。</li>
+<li>元注解是自定义注解的注解，包括<ul>
+<li><code>@Target</code>：用来约束注解的位置，值是ElementType枚举类，包括METHOD方法、VARIABLE变量、TYPE类/接口、PARAMETER方法参数、CONSTRUCTORS构造器和LOACL_VARIABLE局部变量；</li>
+<li><code>@Rentention</code>：用来约束注解的生命周期，值是RetentionPolicy枚举类，包括：SOURCE源码、CLASS字节码和RUNTIME运行时。</li>
+<li><code>@Documented</code>：表明这个注解应该被javadoc工具记录。</li>
+<li><code>@Inherited</code>：表明某个被标注的类型是被继承的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="继承的设计技巧"><a href="#继承的设计技巧" class="headerlink" title="继承的设计技巧"></a>继承的设计技巧</h3><ul>
+<li>将公共操作和字段放在父类中。</li>
+<li>不要使用受保护的字段。</li>
+<li>使用继承实现is-a的关系。</li>
+<li>除非所有继承的方法都有意义，否则不要使用继承。</li>
+<li>在重写方法时，不要改变预期的行为。</li>
+<li>使用多态，而不要使用类型信息。</li>
+<li>不要滥用反射。</li>
+</ul>
+<hr>
+<h2 id="接口、lambda表达式和内部类"><a href="#接口、lambda表达式和内部类" class="headerlink" title="接口、lambda表达式和内部类"></a>接口、lambda表达式和内部类</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口不是类，而是对希望符合这个接口的类的一组需求。</p>
+<p>接口中的所有方法都默认是public的，因此在接口中声明方法时不必提供关键字public。</p>
+<p>接口还可以定义常量，但接口不能提供实例字段，也不能实例化，只有接口的实现类可以实例化。</p>
+<p>每个类只能有一个父类，但是可以实现多个接口，这为定义类的行为提供了极大的灵活性。</p>
+<ul>
+<li><p><strong>接口与抽象类</strong></p>
+<p>使用抽象类表示通用属性存在一个严重的问题，每个类只能扩展一个类。Java选择了不支持多重继承，主要原因是多重继承会让语言变得非常复杂，或者效率会降低。接口可以提供多重继承的大多数好处，同时还能避免多重继承的复杂性和低效性。</p>
+<p>接口和抽象类都不能被实例化，但抽象类具有构造器而接口没有构造器。</p>
+<p>抽象类中定义变量和方法没有限制，接口中只能定义常量，在Java8前只能定义public方法，Java8开始支持默认方法和静态方法，Java9开始支持私有方法，私有方法可以是静态方法或实例方法，由于私有方法只能在接口本身的方法中使用，所以其用法很有限，只能作为接口中其他方法的辅助方法。</p>
+</li>
+<li><p><strong>默认方法</strong></p>
+<p>默认方法的一个重要用法是接口演化，假如为接口增加了一个新的方法，其实现类将不能编译，因为它没有实现这个新方法，为接口增加一个非默认方法不能保证源代码兼容。将方法实现为一个默认方法就可以解决该问题。</p>
+<p>如果在接口中定义了默认方法，父类中也有方法签名一样的具体方法，会优先使用父类方法，接口中的方法会被忽略。</p>
+<p>如果两个接口提供了相同的默认方法，就必须在实现类重写来解决二义性问题，否则会编译报错。</p>
+</li>
+</ul>
+<hr>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda表达式是一个可传递的代码块，可以在以后执行一次或多次。</p>
+<p>即使lambda表达式没有参数，仍然要提供空括号，就像无参数方法一样。如果可以推导出一个lambda表达式的参数类型，则可以忽略其类型。如果方法只有一个参数，而且这个参数的类型可以推导得出，那么可以省略小括号。</p>
+<p>无须指定lambda表达式的返回类型，lambda表达式的返回类型总会是由上下文推导得出。</p>
+<p>如果一个lambda表达式只在某些分支返回一个值，而另外一些分支不返回值，就是不合法的。</p>
+<ul>
+<li><p><strong>函数式接口</strong></p>
+<p>对于只有一个抽象方法的接口，需要这种接口的对象时，就可以提供一个lambda表达式，这种接口称为函数式接口。通过<code>@FunctionalInterface</code>标识一个接口为函数式接口，如果不满足有且仅有一个抽象方法的要求就会报错。</p>
+</li>
+<li><p><strong>方法引用</strong></p>
+<p>可以直接把某个方法作为参数传递，主要有三种情况：</p>
+<ul>
+<li>传递某个对象的实例方法，例如<code>System.out::println</code>，对象是System.out。</li>
+<li>传递某个类的实例方法，第一个参数作为隐式参数，例如<code>String::compareTo</code>。</li>
+<li>传递某个类的静态方法，例如<code>Math::pow</code>。</li>
+</ul>
+<p>只有当lambda表达式只调用一个方法而不进行其他操作时，才能把lambda表达式重写为方法引用。</p>
+<p>一个常用转换，List数组转换为int数组：<code>list.stream().mapToInt(Integer::intValue).toArray()</code></p>
+</li>
+<li><p><strong>构造器引用</strong></p>
+<p>构造器引用和方法引用很类似，只不过方法名为new。例如<code>Person::new</code>是Person构造器的一个引用，具体是哪个构造器取决于上下文。</p>
+</li>
+<li><p><strong>变量作用域</strong></p>
+<p>在lambda表达式中，只能引用值不会改变的变量。因为如果在lambda表达式中更高变量，并发执行时就会不安全。另外如果在lambda表达式中引用一个变量，而这个变量可能在外部更改，也是不合法的，例如for循环中的计数器不能在lambda表达式中引用，lambda表达式中捕获的值必须实际上是最终变量，即这个变量初始化后就不会再为它赋新值。</p>
+<p>lambda表达式的体与嵌套块具有相同的作用域，在lambda表达式中声明与一个局部变量同名的参数或局部变量是不合法的。</p>
+<p>在一个lambda表达式中使用this关键字时，是指创建这个lambda表达式的方法的this参数。</p>
+</li>
+<li><p><strong>处理lambda表达式</strong></p>
+<p>使用lambda表达式的重点是延迟执行，之所以希望之后再执行代码，有很多原因，如：</p>
+<ul>
+<li>在一个单独的线程中运行代码</li>
+<li>多次运行代码</li>
+<li>在算法的适当位置运行代码</li>
+<li>发生某种情况时执行代码</li>
+<li>只在必要时运行代码</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>内部类是定义在另一个类中的类，使用内部类的原因主要有两个：</p>
+<ul>
+<li>内部类可以对同一个包中的其他类隐藏。</li>
+<li>内部类方法可以访问定义这个类的作用域中的数据，包括原本私有的数据。</li>
+</ul>
+<p>内部类的分类：</p>
+<ul>
+<li><p><strong>成员内部类</strong></p>
+<p>普通的内部类，可以自由引用外部类的字段和方法，无论这些字段和方法是静态还是非静态的。成员内部类属于外部类实例对象，只有外部类被实例化后这个内部类才能被实例化。</p>
+<p>成员内部类的构造语法：<code>new Outer().new Inner()</code></p>
+</li>
+<li><p><strong>静态内部类</strong></p>
+<p>被声明为static的内部类，属于外部类本身，不依赖于外部类的实例对象。静态内部类只能访问外部类中静态成员和方法。</p>
+<p>有时使用内部类只是为了把一个类隐藏在另一个类内部，并不需要内部类有外部类对象的一个引用，为此可以将内部类声明为静态内部类。</p>
+<p>静态内部类的构造语法：<code>new Outer.Inner()</code></p>
+</li>
+<li><p><strong>局部内部类</strong></p>
+<p>局部内部类是定义在一个代码块中的累，作用范围仅在其所在代码块。局部内部类就像局部变量一样，不能被访问修饰符修饰。</p>
+<p>局部内部类有一个很大的优势，即对外部世界完全隐藏。</p>
+</li>
+<li><p><strong>匿名内部类</strong></p>
+<p>没有类名的内部类，没有构造器，必须继承或实现其他接口，一般使用lambda表达式实现。</p>
+</li>
+</ul>
+<hr>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="异常分类"><a href="#异常分类" class="headerlink" title="异常分类"></a>异常分类</h3><p>在Java中所有异常对象都是派生自Throwable类的一个实例，Throwable分为Error和Exception。</p>
+<ul>
+<li><p><strong>Error</strong></p>
+<p>Error类层次结构描述了Java运行时系统的内部错误和资源耗尽错误，如果出现了这样的内部错误，一般是无力解决的。</p>
+</li>
+<li><p><strong>Exception</strong></p>
+<ul>
+<li><p><strong>RuntimeException</strong></p>
+<p>由编程错误导致的异常属于RuntimeException，常见的RuntimeException包括：错误的强制类型转换、数组访问越界、空指针异常。</p>
+</li>
+<li><p><strong>其他异常</strong></p>
+<p>程序本身没有问题，但由于像IO错误这类问题导致的异常属于其他异常，常见的非RuntimeException包括：试图超越文件末尾继续读取数据、试图打开一个不存在的文件、根据字符串查找Class对象而这个字符串表示的类并不存在。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>派生自Error和RuntimeException的异常称为非检查型异常，所有其他的异常称为检查型异常，检查型异常必须全部声明，否则编译器会报错。</p>
+<hr>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><ul>
+<li><p><strong>异常抛出</strong></p>
+<p>可以在方法上使用throws关键字抛出异常给上层调用者，或者在方法中使用throw语句抛出异常。</p>
+</li>
+<li><p><strong>异常捕获</strong></p>
+<p>使用try-catch代码块，如果try代码块中出现了异常，程+序会跳过try中的剩余语句并执行catch代码块，如果没有出现异常会跳过catch代码块。</p>
+<p>可以在try-catch代码块中使用finally代码块，用于资源的清理，从Java7开始可以使用try-with-resources，资源是指实现了Closeable接口的类，try块退出时会自动调用资源的close方法来释放资源。</p>
+<p>无论try中是否遇到了异常，finally代码块都会执行。</p>
+</li>
+</ul>
+<p>一般经验是捕获那些你知道如何处理的异常，而继续传播那些你不知道如何处理的异常交给调用者来处理。</p>
+<hr>
+<h3 id="使用异常的技巧"><a href="#使用异常的技巧" class="headerlink" title="使用异常的技巧"></a>使用异常的技巧</h3><ul>
+<li>异常处理不能替代简单的测试。</li>
+<li>不要过分地细化异常。</li>
+<li>充分利用异常的层次结构。</li>
+<li>不要压制异常。</li>
+<li>在检测错误时，苛刻比放任更好，异常应该尽早抛出。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Yuhao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://yuhao1517.github.io/2021/03/15/Java%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">https://yuhao1517.github.io/2021/03/15/Java%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Yuhao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                                    <span class="chip bg-color">Java基础语法</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/03/15/Java%E9%9B%86%E5%90%88%E7%AC%94%E8%AE%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Java集合笔记">
+                        
+                        <span class="card-title">Java集合笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yuhao
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+                        <span class="chip bg-color">Java集合框架</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/15/Java%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java基础入门">
+                        
+                        <span class="card-title">Java基础入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yuhao
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">Java基础语法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="1819636482"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Yuhao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yuhao1517" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:411963853@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=411963853" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 411963853" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

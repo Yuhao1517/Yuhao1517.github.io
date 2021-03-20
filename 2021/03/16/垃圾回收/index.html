@@ -1,0 +1,1457 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="垃圾回收, Yuhao&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>垃圾回收 | Yuhao&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+<script src="/js/cursor.js"></script>
+<script type="text/javascript">
+//只在桌面版网页启用特效
+var windowWidth = $(window).width();
+if (windowWidth > 768) {
+    document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+}
+</script>
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yuhao&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yuhao&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">垃圾回收</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
+                                <span class="chip bg-color">GC垃圾回收</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">
+                                <span class="chip bg-color">垃圾回收器</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-16
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    24 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>对于Java内存运行时区域的各部分，程序计数器、虚拟机栈和本地方法栈3个区域的生命周期和线程相同，栈中的栈帧随着方法的进入和退出而有规律地执行出栈和入栈操作，每一个栈帧中分配多少内存基本上是在类结构确定下来时就已知的（运行期会由即时编译器优化但大体上可认为是编译器已知的），因此这几个区域地内存分配和回收都具备确定性，在这几个区域内不需要过多考虑回收问题，当方法或线程结束时，内存自然就跟着回收了。</p>
+<p>而Java堆和方法区这两个区域则有显著的不确定性：一个接口的多个实现类需要的内存可能会不一样，一个方法所执行的不同条件分支所需要的内存也可能不一样，只有处于运行期间，我们才能知道程序究竟会创建哪些对象，创建对象的数量，这部分内存的分配和回收是动态的。垃圾收集器关注的正是这部分内存的管理问题。</p>
+<hr>
+<h3 id="判断对象是否是垃圾"><a href="#判断对象是否是垃圾" class="headerlink" title="判断对象是否是垃圾"></a>判断对象是否是垃圾</h3><p>在堆中存放着所有对象实例，垃圾收集器在对堆进行回收前，首先要判断对象是否还存活着。</p>
+<ul>
+<li><p><strong>引用计数算法</strong></p>
+<p>在对象中添加一个引用计数器，如果有一个地方引用它计数器就加1，引用失效时计数器就减1，如果计数器为0则该对象就是不再被使用的。</p>
+<p>该算法原理简单，效率也高，但是在Java中很少使用，因为它存在对象之间互相循环引用的问题，导致计数器无法清零。</p>
+</li>
+<li><p><strong>可达性分析算法</strong></p>
+<p>当前主流语言的内存管理子系统都是使用可达性分析算法来判断对象是否存活的。这个算法的基本思路就是通过一系列称为GC Roots的根对象作为起始节点集，从这些节点开始，根据引用关系向下搜索，搜索过程所走过的路径称为引用链，如果某个对象到GC Roots之间没有任何引用链相连，则此对象是不可能再被使用的。</p>
+<p>可作为GC Roots的对象包括以下几种：</p>
+<ul>
+<li>本地代码缓存等。</li>
+</ul>
+</li>
+<li><p><strong>再谈引用</strong></p>
+<p>无论通过引用计数算法还是可达性分析算法判断对象是否存活，都和引用离不开关系。在JDK1.2之前，Java对引用的定义是：如果reference类型数据存储的数值代表另外一块内存的起始地址，那么就称该reference数据是代表某块内存、某个对象的引用。在JDK1.2之后Java对引用的概念进行了扩充，按引用强度分为：</p>
+<ul>
+<li><strong>强引用</strong>：最传统的引用定义，指程序代码中普遍存在的引用赋值。无论任何情况下，只要强引用关系还存在，垃圾收集器就永远不会回收掉被引用的对象。</li>
+<li><strong>软引用</strong>：描述一些还有用但非必需的对象。只被软引用关联的对象，在系统将要发生内存溢出异常前，会把这些对象列进回收范围之中进行第二次回收，如果这次回收还没有足够的内存才会抛出OOM异常。</li>
+<li><strong>弱引用</strong>：描述非必需对象，但引用强度比软引用更弱，被弱引用关联的对象只能生存到下一次垃圾收集发生之前。当垃圾收集器开始工作时无论当前内存是否足够，都会回收只被弱引用关联的对象。</li>
+<li><strong>虚引用</strong>：也称幽灵引用或幻影引用，它是最弱的引用关系。一个对象是否有虚引用存在，完全不会对其生存时间造成应用，也无法通过虚引用来取得一个对象实例。该引用的唯一目的就是为了能在这个对象被垃圾收集器回收时收到一个系统通知。</li>
+</ul>
+</li>
+<li><p><strong>finalize方法</strong></p>
+<p>要宣告一个对象死亡至少要经过两次标记过程，如果对象在进行可达性分析后发现没有与GC Roots连接的引用链，那它将会被第一次标记，随后进行一次筛选，筛选的条件是此对象是否有必要执行finalize方法。假如对象没有重写finalize方法或者该方法已经被虚拟机调用过，那么虚拟机将这两种情况视为没有必要执行。</p>
+<p>如果这个对象被判断为有必要执行finalize方法，就会被放置在一个叫做F-Queue的队列中，并由一条虚拟机自动建立的、低调度优先级的Finalizer线程去执行它们的finalize方法。虚拟机会触发该方法但不保证它会运行结束，这是为了防止某个对象的finalize方法执行缓慢或者发生死循环而影响整个内存回收子系统。只要对象在finalize方法中重新与引用链上的任何一个对象建立关联关系就会在第二次标记时被移出即将回收集合，否则就会被真正回收。</p>
+<p>注意：finalize方法由于运行代价高昂，不确定性大，无法保证各个对象的调用顺序，如今已被官方明确声明为不推荐使用的语法，因此它并不适合释放资源，释放资源完全可以使用try-finally代码块。</p>
+</li>
+<li><p><strong>回收方法区</strong></p>
+<p>方法区垃圾收集的”性价比“通常较低，主要回收两部分内容：废弃的常量和不再使用的类型。回收废弃常量与回收Java堆中的对象非常类似，判断一个常量是否废弃相对简单，而判断一个类型是否属于不再使用的类需要同时满足以下三个条件：</p>
+<ul>
+<li>该类的所有实例都已经被回收，堆中不存在该类及其任何派生子类的实例。</li>
+<li>加载该类的类加载器已经被回收。</li>
+<li>该类对象的Class对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+</ul>
+<p>虚拟机被允许对满足这三个条件的无用类进行回收，没有引用了不一定会必然回收，是否回收通过<code>-Xnoclassge</code>参数进行控制。还可以通过<code>-verbose:class</code>和<code>-XX:+TraceClassLoading</code>、<code>-XX:+TraceClassUnLoading</code>查看类加载和卸载信息。</p>
+<p>在大量使用反射、动态代理、CGLib等字节码框架，动态生成JSP以及OSGi这类频繁自定义类加载器的场景中，通常都需要Java虚拟机具备类型卸载的能力，保证不会对方法区造成过大内存压力。</p>
+</li>
+</ul>
+<hr>
+<h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><ul>
+<li><p><strong>分代收集理论</strong></p>
+<p>当前商业虚拟机的垃圾收集器大多数都遵循了分代收集理论进行设计，分代收集建立在两个假说上：</p>
+<ul>
+<li>弱分代假说：绝大多数对象都是朝生夕灭的。</li>
+<li>强分代假说：熬过越多次垃圾收集过程的对象就越难以消亡。</li>
+</ul>
+<p>这两个分代假说共同奠定了多款垃圾收集器的一致设计原则：收集器应该将Java堆划分出不同的区域，然后将回收对象依据年龄分配到不同的区域之中。</p>
+<p>把分代收集理论放到商用虚拟机中，设计者一般至少会把Java堆划分为新生代和老年代两个区域。在新生代每次垃圾回收都有大批对象灭亡，而每次回收后存活的少量对象将会逐步晋升到老年代中。</p>
+<p>为了解决跨代引用问题，引入了第三条经验法则：</p>
+<ul>
+<li>跨代引用假说：跨代引用相对于同代引用仅占极少数。</li>
+</ul>
+<p>依据这条假说，我们不该再为了少量的跨代引用去扫描整个老年代，也不必浪费空间专门记录每个对象是否存在及存在哪些跨代引用，只需在新生代上建立一个全局的数据结构（记忆集），这个结构把老年代划分为若干小块，标记出老年代的哪一块内存会存在跨代引用。此后发生MinorGC时，只有包含了跨代引用的小块内存中的对象才会被加入到GC Roots进行扫描。</p>
+<p>垃圾收集名词：</p>
+<ul>
+<li>MinorGC：目标只是新生代的垃圾收集。</li>
+<li>MajorGC：目标只是老年代的垃圾收集，目前只有CMS会单独收集老年代。</li>
+<li>MixedGC：混合收集，目前只有G1会有这种行为。</li>
+<li>FullGC：收集整个Java堆和方法区。</li>
+</ul>
+</li>
+<li><p><strong>标记-清除算法</strong></p>
+<ul>
+<li><p><strong>原理</strong></p>
+<p>算法分为标记和清除两个阶段：首先标记出所有需要回收的对象，在标记完成之后，统一回收掉所有被标记的对象，或者标记存活的对象，统一回收所有未被标记的对象。标记过程就是对象是否属于垃圾的判定过程。</p>
+</li>
+<li><p><strong>特点</strong></p>
+<p>① 执行效率不稳定，如果堆中包含大量对象，而且其中大部分是需要被回收的，这时必须进行大量标记和清除动作，导致效率随对象数量增长而降低。</p>
+<p>② 内存空间碎片化问题，标记、清楚之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行中需要分配较大对象时无法找出足够的连续内存而不得不提前触发另一次垃圾收集。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>标记-复制算法</strong></p>
+<ul>
+<li><p><strong>原理</strong></p>
+<p>将可用内存按容量划分为大小相等的两块，每次只使用其中一块。当这一块的空间用完了，就将还存活着的对象复制到另一块上面，然后再把已使用过的内存空间一次清理掉。</p>
+</li>
+<li><p><strong>特点</strong></p>
+<p>① 实现简单、运行高效，解决了内存空间碎片问题。</p>
+<p>② 代价是将可用内存缩小为原来的一半，浪费了过多空间。</p>
+</li>
+<li><p><strong>HotSpot的新生代划分</strong></p>
+<p>把新生代划分为一块较大的Eden空间和两块较小的Survivor空间，每次分配内存只使用Eden和其中一块Survivor。发生垃圾收集时，将Eden和Survivor中仍然存活的对象一次性复制到另一块Survivor上，然后直接清理掉Eden和已用过的那块Survivor空间。HotSpot虚拟机默认Eden和Survivor的大小比例是8：1，即每次新生代中可用空间为整个新生代的90%。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>标记-整理算法</strong></p>
+<ul>
+<li><p><strong>原理</strong></p>
+<p>标记-复制算法在对象存活率较高时就要进行较多的复制操作，效率将会降低。并且如果不想浪费空间，就需要有额外的空间进行分配担保，以应对被使用内存中所有对象都100%存活的极端情况，所以老年代一般不使用此算法。</p>
+<p>老年代使用标记-整理算法，其中标记过程与标记-清除算法一样，只是后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向内存空间一端移动，然后直接清理掉边界以外的内存。</p>
+</li>
+<li><p><strong>特点</strong></p>
+<p>标记-清除算法与标记-整理算法的本质差异在于前者是一种非移动式的回收算法，而后者是移动式的。是否移动回收后的存活对象是一项优缺点并存的风险策略：</p>
+<p>如果移动存活对象，尤其是在老年代这种每次回收都有大量对象存活的区域，是一种极为负重的操作，而且这种对象移动必须全程暂停用户应用程序才能进行。但如果不移动对象就会导致空间碎片化问题，只能依赖更复杂的内存分配器和内存访问器来解决。所以是否移动对象都存在弊端，移动则内存回收时更复杂，不移动则内存分配时更复杂。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="经典垃圾收集器"><a href="#经典垃圾收集器" class="headerlink" title="经典垃圾收集器"></a>经典垃圾收集器</h3><p>经典的垃圾收集器指JDK11之前的全部可用垃圾收集器。</p>
+<ul>
+<li><p><strong>Serial</strong></p>
+<p>Serial收集器是最基础、历史最悠久的收集器，该收集器是一个使用复制算法的单线程工作收集器，单线程的意义不仅是说明它只会使用一个处理器或一条收集线程去完成垃圾收集工作，更重要的是强调它进行垃圾收集时必须暂停其他所有工作线程直到收集结束。</p>
+<p>Serial是虚拟机运行在客户端模式下的默认新生代收集器，优点是简单且高效，对于内存受限的环境，它是所有收集器中最小的；对于单核处理器或处理器核心较少的环境来说，Serial收集器由于没有线程交互开销，因此可获得最高的单线程收集效率。</p>
+</li>
+<li><p><strong>ParNew</strong></p>
+<p>ParNew实质上是Serial的多线程版本，除了使用多线程进行垃圾收集外其余行为完全一致。</p>
+<p>ParNew是虚拟机运行在服务端模式下的默认新生代收集器，一个重要原因是除了Serial收集器外，只有它能与CMS收集器配合工作。</p>
+<p>自从JDK9开始，ParNew加CMS收集器的组合就不再是官方推荐的服务端模式下的收集器解决方案了，官方希望他能被G1完全取代，甚至取消了Serial加CMS和ParNew加Serial Old这两组收集器组合。</p>
+</li>
+<li><p><strong>Parallel Scavenge</strong></p>
+<p>Parallel Scavenge也是新生代收集器，同样基于标记-复制算法，也是可以并行的多线程收集器，与ParNew十分类似。</p>
+<p>它的特点是它的关注点与其他收集器不同，CMS等收集器的关注点是尽可能缩短收集时用户线程的停顿时间，而Parallel Scavenge收集器的目标则是达到一个可控制的吞吐量，吞吐量就是处理器用于运行用户代码的时间与处理器消耗总时间的比值。自适应调节策略也是Parallel Scavenge区别于ParNew的一个重要特性。</p>
+</li>
+<li><p><strong>Serial Old</strong></p>
+<p>Serial Old是Serial收集器的老年代版本，它同样是一个单线程收集器，使用标记-整理算法。</p>
+<p>Serial Old是虚拟机在客户端模式下的默认老年代收集器，如果用于服务端，它可能有两种用途：一种是JDK5及之前与Parallel Scavenge搭配使用，另外一种是作为CMS收集器发生失败时的后备预案。</p>
+</li>
+<li><p><strong>Parellel Old</strong></p>
+<p>Parallel Old是Parallel Scavenge收集器的老年代版本，支持多线程收集，基于标记-整理算法实现。这个收集器直到JDK6才开始提供，在注重吞吐量优先的场景可以有效考虑Parallel Scavenge加Parallel Old组合。</p>
+</li>
+<li><p><strong>CMS</strong></p>
+<p>CMS是一种以获取最短回收时间停顿时间为目标的收集器，如果希望系统停顿时间尽可能短给用户带来更好的交互体验，就可以使用CMS收集器。</p>
+<p>CMS是基于标记-清除算法实现的，但过程相对复杂，整个过程分为四个步骤：</p>
+<ul>
+<li><strong>初始标记</strong></li>
+<li><strong>并发标记</strong></li>
+<li><strong>重新标记</strong></li>
+<li><strong>并发清除</strong></li>
+</ul>
+<p>其中初始标记和重新标记仍然需要STW（Stop The World，表示系统停顿），初始标记仅是标记一下GC Roots能直接关联到的对象，速度很快；并发标记就是从GC Roots的直接关联对象开始遍历整个对象图的过程，这个过程耗时较长但是不需要停顿用户线程，可以与垃圾收集线程并发运行；重新标记阶段则是为了修正并发标记期间，因用户程序运作而导致标记产生变动的那一部分对象的标记记录，该阶段停顿时间比初始标记稍长，但远比并发标记短；最后是并发清除阶段，清理删除标记阶段判断的已死亡对象，由于不需要移动存活对象，因此该阶段也是可以与用户线程并发的。</p>
+<p>由于整个过程中耗时最长的并发标记和并发清除阶段中，垃圾收集器都可以和用户线程一起工作，所以从总体上说，CMS收集器的内存回收过程是与用户线程并发执行的。</p>
+<p>CMS是HotSpot虚拟机追求低停顿的第一次成功尝试，但它还存在三个明显的缺点：</p>
+<ul>
+<li><p>对处理器资源非常敏感，在并发阶段虽然不会导致用户线程暂停，但会降低总吞吐量。</p>
+</li>
+<li><p>无法处理浮动垃圾，有可能出现并发失败而导致另一次FullGC的产生。</p>
+</li>
+<li><p>由于CMS基于标记-清除算法，因此会产生大量空间碎片，给大对象分配带来很大麻烦。</p>
+<p><strong>浮动垃圾：</strong></p>
+<blockquote>
+<p>在CMS的并发标记和并发清理阶 段，用户线程是还在继续运行的，程序在运行自然就还会伴随有新的垃圾对象不断产生，但这一部分 垃圾对象是出现在标记过程结束以后，CMS无法在当次收集中处理掉它们，只好留待下一次垃圾收集 时再清理掉。这一部分垃圾就称为“浮动垃圾”。</p>
+</blockquote>
+<blockquote>
+<p>重新标记 的作用只是修改之前 并发标记 所获得的不可达对象，所以是没有办法处理 “浮动垃圾” 的。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>G1</strong></p>
+<p>G1开创了收集器面向局部收集的设计思路和基于Region的内存布局形式。G1是一款主要面向服务端应用的垃圾收集器，最初的设计目标是替换JDK5中发布的CMS。</p>
+<p>G1收集器之前的其他收集器，包括CMS，垃圾收集的目标要么是整个新生代，要么是整个老年代，或者整个堆。而G1跳出了这个樊笼，可以面向堆内存任何部分来组成回收集进行回收，衡量标准不再是它属于哪个分代，而是哪块内存中存放的垃圾数量最多，回收受益最大，这就是G1的MixedGC模式。</p>
+<p>G1不再坚持固定大小以及固定数量的分代区域划分，而是把Java堆划分为多个大小相等的独立区域（Region），每一个Region都可以根据需要扮演新生代的Eden空间、Survivor空间或老年代空间。收集器能够对扮演不同角色的Region采用不同的策略去处理，这样无论是新创建的对象还是已经存活了一段时间、熬过多次收集的旧对象都能获取很好的收集效果。</p>
+<p>G1跟踪各个Region里面的垃圾堆积的价值大小，价值即回收所获得的空间大小以及回收所需时间的经验值，然后在后台维护一个优先级列表，每次根据用户设定允许的收集停顿时间优先处理回收价值收益最大的那些Region。这种使用Region划分内存空间，以及具有优先级的区域回收方式，保证了G1在有限的时间内获取尽可能高的收集效率。</p>
+<p>G1收集器的运作过程：</p>
+<ul>
+<li><strong>初始标记：</strong>仅仅标记一下GC Roots能直接关联到的对象，并且修改TAMS指针的指，让下一阶段用户线程并发运行时，能正确地在可用Region中分配新对象。该阶段需要STW，但耗时很短，是借用进行MinorGC的时候同步完成的。</li>
+<li><strong>并发标记：</strong>从GC Roots开始对堆中对象进行可达性分析，递归扫描整个堆里的对象图，找出需要回收的对象。该阶段耗时长，但可与用户程序并发执行，当对象图扫描完成后还要重新处理SATB记录下的在并发时有引用变动的对象。</li>
+<li><strong>最终标记：</strong>对用户线程做另一个短暂的暂停，用于处理并发阶段结束后仍遗留下来的最后那少量的SATB记录。</li>
+<li><strong>筛选回收：</strong>负责更新Region的统计数据，对各个Region的回收价值和成本排序，根据用户期望的停顿时间指定回收计划，可自由选择任意多个Region构成回收集然后把决定回收的那一部分Region的存活对象复制到空的Region中，再清理掉整个旧的Region的全部空间。该操作涉及对象的移动必须暂停用户线程，由多条收集器线程并行完成。</li>
+</ul>
+<p>可以由用户指定期望的停顿时间是G1的一个强大功能，但该值不能设得太低，一般设置为100~300毫秒比较合适。G1不会存在内存空间碎片的问题，但G1为了垃圾收集产生的内存占用和程序运行时的额外执行负载都高于CMS。</p>
+</li>
+</ul>
+<hr>
+<h3 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h3><p>指Shenandoah和ZGC，这两个收集器几乎整个工作过程全部都是并发的，只有初始标记、最终标记这些阶段有短暂的停顿，这部分停顿的时间基本上都是固定的，与堆的容量、堆中对象的数量没有正比例关系。</p>
+<ul>
+<li><p><strong>Shenandoah</strong></p>
+<p>相比G1，内存布局同样基于Region，默认的回收策略也是优先处理回收价值最大的Region。但在管理堆内存方面，它与G1有一些不同之处：①支持并发的整理算法，G1的回收阶段是多线程并行的但是不能与用户线程并发。②默认不使用分代收集，不会有专门的新生代Region或老年代Region的存在。③摒弃了在G1中耗费大量内存和计算资源去维护的记忆集，改用名为连接矩阵的全局数据结构来记录跨Region的引用关系，降低了处理跨代指针时的记忆集维护消耗，也降低了伪共享问题的发生概率。</p>
+</li>
+<li><p><strong>ZGC</strong></p>
+<p>一款JDK11中新加入的具有实验性质的低延迟垃圾收集器，和Shenandoah的目标高度相似，都希望在尽可能对吞吐量影响不大的前提下实现在任意堆大小下都可以把垃圾收集器的停顿时间限制在10ms以内的低延迟。</p>
+<p>ZGC是一款基于Region内存布局的，不设分代的，使用了读屏障、染色指针和内存多重映射等技术来实现可并发的标记-整理算法的，以低延迟为首要目标的一款垃圾收集器。</p>
+<p>ZGC的内存布局与Shenandoah和G1一样，ZGC也采用基于Region的堆内存布局，但不同的是ZGC的Region具有动态性，是动态创建和销毁的，并且区容量大小也是动态变化的。</p>
+</li>
+</ul>
+<hr>
+<h3 id="垃圾收集器的选择"><a href="#垃圾收集器的选择" class="headerlink" title="垃圾收集器的选择"></a>垃圾收集器的选择</h3><ul>
+<li><p><strong>影响因素</strong></p>
+<ul>
+<li>如果是数据分析、科学计算类的任务，目标是尽快算出结果，那吞吐量就是主要关注点；如果是SLA应用，那停顿时间直接影响服务质量，严重的甚至会导致事务超时，那延迟就是主要关注点；如果是客户端应用或嵌入式应用，那垃圾收集的内存占用就是主要关注点。</li>
+<li>运行应用的基础设施，例如硬件规格，处理器数量的多少，分配内存的大小，选择的操作系统等。</li>
+<li>使用JDK的发行商及版本号，对应的《Java虚拟机规范》版本等。</li>
+</ul>
+</li>
+<li><p><strong>虚拟机和垃圾收集日志</strong></p>
+<p>阅读分析虚拟机和垃圾收集日志是处理Java虚拟机内存问题必备的基础技能。</p>
+<p>日志级别从低到高包括Trace、Debug、Info、Warning、Error、Off六种级别，默认为Info。</p>
+<p>以G1收集器为例，一些常用参数如下（JDK9之前/JDK9后）：</p>
+<ul>
+<li>查看GC基本信息：<code>-XX:+PrintGC</code>/<code>-Xlog:gc</code></li>
+<li>查看GC详细信息：<code>-XX:+PrintGCDetails</code>/<code>-X-log:gc*</code></li>
+<li>查看GC前后堆、方法区可用容量的变化：<code>-XX:+PrintHeapAtGC</code>/<code>-Xlog:gc+heap=debug</code></li>
+<li>查看GC过程中用户线程并发时间以及停顿时间：<code>-XX:+PrintGCApplicationConcurrentTime</code>和<code>-XX:+PrintGCApplicationStoppedTime</code>/<code>-Xlog:safepoint</code></li>
+<li>查看熬过收集后剩余对象的年龄分布信息：<code>-XX:+PrintTenuringDistribution</code>/<code>-Xlog:gc+age=trace</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h3><p>Seial+Serial Old客户端默认收集器组合下的内存分配和回收策略：</p>
+<ul>
+<li><p><strong>对象优先在Eden区分配</strong></p>
+<p>大多数情况下对象在新生代Eden区分配，当Eden区没有足够空间进行分配时，虚拟机将发起一次MinorGC。</p>
+<p>可通过<code>-XX:Xms</code>和<code>-XX:Xmx</code>设置堆大小，通过<code>-Xmn</code>设置新生代的大小，通过<code>-XX:SurvivorRatio</code>设置新生代中Eden区和Survivor区的比例。</p>
+</li>
+<li><p><strong>大对象直接进入老年代</strong></p>
+<p>大对象就是指需要大量连续内存空间的Java对象，最典型的大对象便是那种很长的字符串，或者元素数量很庞大的数组。大对象容易导致内存明明还有不少空间时就提前触发垃圾收集，以获得足够的连续空间才能安置好它们，当复制对象时，大对象就意味着高额内存复制开销。HotSpot提供了<code>-XX:PretenureSizeThreshold</code>参数（只有Serial和ParNew支持），大于该值的对象直接在老年代分配，避免在Eden和Survivor区之间来回复制产生大量内存复制操作。</p>
+</li>
+<li><p><strong>长期存活对象进入老年代</strong></p>
+<p>虚拟机给每一个对象定义了一个对象年龄计数器，存储在对象头。对象通常在Eden区诞生，如果经历过第一次MinorGC仍然存活，并且能被Survivor容纳的话，该对象就会被移动到Survivor中并将年龄设置为1岁。对象在Survivor中每熬过一次MinorGC，年龄就增加1岁，当增加到一定程度（默认15）就会被晋升到老年代中。对象晋升老年代的年龄阈值，可通过参数<code>-XX:MaxTenuringThreshold</code>设置。</p>
+</li>
+<li><p><strong>动态对象年龄判定</strong></p>
+<p>为了更好适应不同程序的内存状况，虚拟机并不是永远要求对象年龄达到晋升阈值才能晋升到老年代，如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一般，年龄大于等于该年龄的对象就可以直接进入老年代，无需等到<code>-XX:MaxTenuringThreshold</code>中要求的年龄。</p>
+</li>
+<li><p><strong>空间分配担保</strong></p>
+<p>在发生MinorGC之前，虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象的总空间，如果这个条件成立，那这一次MinorGC可以确定是安全的。</p>
+<p>如果不成立，虚拟机会先查看<code>-XX:HandlePromotionFailure</code>参数的设置值是否允许担保失败，如果允许会继续检查老年代最大可用连续空间是否大于历次晋升到老年代对象的平均大小，如果大于将冒险尝试一次MinorGC；如果小于或者不允许担保失败，那么就会改成一次FullGC。</p>
+<p>冒险的说明：新生代使用复制收集算法，但为了内存利用率只使用其中一个Survivor空间作为轮换备份，因此当出现大量对象在MinorGC后仍然存活的情况，需要老年代进行分配担保，把Survivor无法容纳的对象直接送入老年代。</p>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Yuhao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://yuhao1517.github.io/2021/03/16/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">https://yuhao1517.github.io/2021/03/16/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Yuhao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
+                                    <span class="chip bg-color">GC垃圾回收</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">
+                                    <span class="chip bg-color">垃圾回收器</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/03/16/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="类加载机制">
+                        
+                        <span class="card-title">类加载机制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yuhao
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
+                        <span class="chip bg-color">类加载机制</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/16/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java虚拟机内存结构">
+                        
+                        <span class="card-title">Java虚拟机内存结构</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yuhao
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="1819636482"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Yuhao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yuhao1517" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:411963853@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=411963853" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 411963853" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
