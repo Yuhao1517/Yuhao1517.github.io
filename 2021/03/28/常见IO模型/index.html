@@ -1,0 +1,1449 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="HTTP与HTTPS, Yuhao&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>HTTP与HTTPS | Yuhao&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+<script src="/js/cursor.js"></script>
+<script type="text/javascript">
+//只在桌面版网页启用特效
+var windowWidth = $(window).width();
+if (windowWidth > 768) {
+    document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+}
+</script>
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yuhao&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yuhao&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">HTTP与HTTPS</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/IO%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">IO模式</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-03-28
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="什么是I-O？"><a href="#什么是I-O？" class="headerlink" title="什么是I/O？"></a>什么是I/O？</h3><p>为了保证操作系统的稳定性和安全性，一个进程的地址空间划分为用户空间和内核空间，像我们平常运行的应用程序 都是运行在用户空间，只有内核空间才能进行系统态级别的资源有关的操作，比如文件管理、进程通信、内存管理等等，也就是说，我们想要进行IO操作，一定是要依赖内核空间的能力。</p>
+<p>并且用户空间的程序不能直接访问内核空间。</p>
+<p>当要执行IO操作时，由于没有执行这些操作的权限，只能发起系统调用请求操作系统帮忙完成。</p>
+<p>因此，用户进程想要执行IO操作的话，必须通过系统调用来间接访问内核空间。</p>
+<p>我们在平常开发过程中接触最多的就是磁盘IO（读写文件）和网络IO（网络请求和响应）。</p>
+<p><strong>从应用程序的视角来看的话，我们的应用程序对操作系统的内核发起 IO 调用（系统调用），操作系统负责的内核执行具体的 IO 操作。也就是说，我们的应用程序实际上只是发起了 IO 操作的调用而已，具体 IO 的执行是由操作系统的内核来完成的。</strong></p>
+<p>当程序发起IO调用后，会经历两个步骤：</p>
+<p>①内核等待IO设备准备好数据</p>
+<p>②内核将数据从内核空间拷贝到用户空间。</p>
+<h3 id="常见IO模型"><a href="#常见IO模型" class="headerlink" title="常见IO模型"></a>常见IO模型</h3><p>IO模型一共有5种：<strong>同步阻塞IO、同步非阻塞IO、IO多路复用、信号驱动IO和异步IO。</strong></p>
+<p><img src="https://i.loli.net/2021/03/28/T7scDifw4X8qd6R.png" alt="image-20210328143748177.png"></p>
+<h4 id="同步阻塞BIO"><a href="#同步阻塞BIO" class="headerlink" title="同步阻塞BIO"></a>同步阻塞BIO</h4><p>BIO属于同步阻塞IO模型。</p>
+<p>同步阻塞IO模型中，应用程序发起read调用后，会一直阻塞，直到内核把数据拷贝到用户空间中。</p>
+<p>在客户端连接数量不高的情况下是没问题的，但是并发量高的时候，传统BIO模型是无能为力的。</p>
+<p><strong>流程描述：</strong>当用户进程调用了<code>recv()/recvfrom()</code>这个系统调用，kernel就开始了IO的第一个阶段：准备数据（对于网络IO来说，很多时候数据在一开始还没有到达。比如，还没有收到一个完整的UDP包。这个时候kernel就要等待足够的数据到来）。这个过程需要等待，也就是说数据被拷贝到操作系统内核的缓冲区中是需要一个过程的。而在用户进程这边，整个进程会被阻塞（当然，是进程自己选择的阻塞）。第二个阶段：当kernel一直等到数据准备好了，它就会将数据从kernel中拷贝到用户内存，然后kernel返回结果，用户进程才解除block的状态，重新运行起来。</p>
+<p><strong>优点：</strong>开发简单，在阻塞等待期间，用户线程挂起，在挂起期间不会占用CPU资源；</p>
+<p><strong>缺点：</strong>一个线程维护一个IO，不适合大并发，在并发量法的时候需要创建大量的线程来维护网络连接，内存、线程开销非常大。</p>
+<p><img src="https://i.loli.net/2021/03/28/on3GwdbV12lCkuO.png" alt="image-20210328143338881.png"></p>
+<h4 id="同步非阻塞NIO"><a href="#同步非阻塞NIO" class="headerlink" title="同步非阻塞NIO"></a>同步非阻塞NIO</h4><p>同步非阻塞IO模型中，应用程序会一直发起read调用，等待数据从内核空间拷贝到用户空间的这段时间里，线程依然是阻塞的，直到内核把数据拷贝到用户空间中。</p>
+<p>相比于同步阻塞IO模型，同步非阻塞IO模型确实有了很大改进，通过轮训操作，避免了一直阻塞。</p>
+<p>但是这种IO模型同样存在问题：应用程序不断进行IO系统调用，轮询数据是否已经准备好的过程是十分消耗CPU资源的。</p>
+<p><strong>流程描述：</strong>当用户进程发出read操作时，如果kernel中的数据还没有准备好，那么它并不会block用户进程，而是立刻返回一个error。从用户进程角度讲，它发起一个read操作后，并不需要等待，而是马上就得到了一个结果。用户进程判断结果是一个error时，它就知道数据还没有准备好，于是它可以再次发送read操作。一旦kernel中的数据准备好了，并且又再次收到了用户进程的system call，那么它马上就将数据拷贝到了用户内存，然后返回。</p>
+<p><strong>优点：</strong>每次发起IO调用，在内核等待数据的过程中可以立即返回，用户线程不会阻塞，实时性较好。</p>
+<p><strong>缺点：</strong>占用大量CPU时间，一般web服务器不会采用此模式。</p>
+<p><img src="https://i.loli.net/2021/03/28/m9BRtIA4OlGE7CW.png" alt="image-20210328143548723.png"></p>
+<h4 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h4><p>IO多路复用类似于非阻塞，只不过轮询不是由用户线程去执行，而是由内核空间去轮询，内核监听程序监听到数据准备好后，调用内核函数复制到用户态。</p>
+<p>IO多路复用模型中，线程首先发起select调用，询问内核数据是否准备就绪，等内核把数据准备好了， 用户线程再发起read调用，read调用的过程（数据从内核空间-&gt;用户空间）还是阻塞的。</p>
+<p><strong>IO多路复用模型，通过减少无效的系统调用，减少了对CPU资源的消耗。</strong></p>
+<h4 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h4><p><strong>文件描述符</strong></p>
+<p>创建文件描述符，文件描述符其实就是一个数字代表的数据结构</p>
+<p><strong>普通文件的文件描述符</strong></p>
+<pre class=" language-shell"><code class="language-shell">exec 6< 1.txt # 创建一个文件描述符6，用6这个数字代表对1.txt的读操作
+exec 7> 1.txt # 创建一个文件描述符6，用6这个数字代表对1.txt的写操作
+exec 8<> 1.txt
+
+lsof -op $$
+lsof -p $BASHPID # 两个命令都可以查看当前进程正在使用的文件的描述符
+
+#以及进到 当前进程的 fd文件夹也可以看到,$$代表当前进程的ID号
+cd /proc/$$/fd
+
+echo "hhh" >& 7 # 往1.txt里边写数据
+read a  0<&  6 # 就可以读取到第一行数据
+</code></pre>
+<p>每个进程都有自己的文件描述符，因为进程的隔离，所以不同进程维护的各自的文件描述符可以是重复的，也就是说不同进程的相同的文件描述符可以指向不同的文件</p>
+<p>假如不同进程的相同的文件描述符指向了同一个文件，他们仍然各自维护了自己的偏移量指针，也就是每个进程可以各自访问自己区域</p>
+<p><strong>socket文件描述符</strong></p>
+<pre class=" language-shell"><code class="language-shell"># 创建socket文件描述符
+exec 8<> /dev/tcp/www.baidu.com
+
+lsof -op $$
+</code></pre>
+<p>socket类型的文件描述符也会有自己的缓存数据的区域，但是这个数据不是要刷盘的，是要通过网卡发走的，中间经历了网络各种层间的协议，包装成数据包发往目标IP地址。</p>
+<pre class=" language-shell"><code class="language-shell">socket() = 3 # socket系统调用返回一个文件描述符，内核开辟一个空间，用该文件描述符指代此空间
+bind(3, 8090); # 把这个空间与 8090端口绑定，一旦8090端口有数据到达，放到这块内存空间中
+linsten(3); # 开始监听这个内存区域
+
+accept(3,  #BIO阶段 accpet 阻塞，一旦有数据到达，就返回一个新的文件描述符
+</code></pre>
+<hr>
+<p><strong>目前支持IO多路复用的系统调用：</strong></p>
+<p>①select：<strong>线性扫描</strong>（轮询）所有监听的文件描述符，不管他们是不是活跃的，有最大数量限制。（32位系统1024,64位系统2048）</p>
+<p>②poll：同select，不过数据结构不同，需要分配一个pollfd结构数组，维护在内核中，它没有大小限制。</p>
+<p>③epoll：用于替代poll和select，没有大小限制，使用一个文件描述符管理多个文件描述符，使用红黑树存储，同时使用事件驱动代替了轮询。epoll_ctl中注册的文件描述符在事件触发的时候会通过回调机制激活该文件描述符，epoll_wait便会收到通知。</p>
+<blockquote>
+<p>select调用是内核级别的，select轮询相对非阻塞的轮询的区别在于—前者可以等待多个socket，能实现同时对多个IO端口进行监听，当其中任何一个socket的数据准好了，就能返回进行可读，然后进程再进行recvform系统调用，将数据由内核拷贝到用户进程，当然这个过程是阻塞的。select或poll调用之后，会阻塞进程，与blocking IO阻塞不同在于，此时的select不是等到socket数据全部到达再处理, 而是有了一部分数据就会调用用户进程来处理。</p>
+</blockquote>
+<p><strong>流程描述：</strong>IO multiplexing就是我们说的select，poll，epoll，有些地方也称这种IO方式为event driven IO。select/epoll的好处就在于单个process就可以同时处理多个网络连接的IO。它的基本原理就是select，poll，epoll这个function会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。</p>
+<p>当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回`。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
+<p><strong>优点：</strong>系统不必创建大量线程，只使用一个线程，一个选择器即可同时处理成千上万个连接，大大减少了系统开销。</p>
+<p><strong>缺点：</strong>本质上，select/epoll系统调用是阻塞的，属于同步IO，需要在读写事件就绪后，由系统调用进行阻塞的读写。</p>
+<p><img src="https://i.loli.net/2021/03/28/z2VXjPxbatElUwN.png" alt="image-20210328143630121.png"></p>
+<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5><p>select 函数监视的客户端的文件描述符分3类，分别是writefds、readfds、和exceptfds。<strong>调用后select函数会阻塞，直到有描述符就绪</strong>（有数据 可读、可写、或者有except），或者超时（timeout指定等待时间，如果立即返回设为null即可），函数返回。当select函数返回后，可以通过遍历fdset，来找到就绪的描述符。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">select</span> <span class="token punctuation">(</span>
+    <span class="token keyword">int</span> nfds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//监控的文件描述符集里最大文件描述符加1，因为此参数会告诉内核检测前有多少个文件描述符的状态 </span>
+    fd_set <span class="token operator">*</span>readfds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//监控有读数据到达文件描述符集合</span>
+    fd_set <span class="token operator">*</span>writefds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//监控写数据到达文件描述符集合</span>
+    fd_set <span class="token operator">*</span>exceptfds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//监控异常发生到达文件描述符集合</span>
+    <span class="token keyword">struct</span> timeval <span class="token operator">*</span>timeout<span class="token comment" spellcheck="true">//定时阻塞监控时间</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>fd_set可以理解为一个集合，这个集合中存放的是文件描述符(file descriptor)，即文件句柄</strong></p>
+<p>select本质上是通过设置或者检查存放fd标志位的数据结构来进行下一步处理。这样所带来的缺点是：</p>
+<ol>
+<li><p><strong>select最大的缺陷就是单个进程所打开的FD是有一定限制的，它由FD_SETSIZE设置，默认值是1024。</strong></p>
+</li>
+<li><p><strong>对socket进行扫描时是线性扫描，即采用轮询的方法，效率较低。</strong></p>
+<p>当套接字比较多的时候，每次select()都要通过遍历FD_SETSIZE个Socket来完成调度，不管哪个Socket是活跃的，都遍历一遍。这会浪费很多CPU时间。如果能给套接字注册某个回调函数，当他们活跃时，自动完成相关操作，那就避免了轮询，这正是epoll做的。</p>
+</li>
+<li><p><strong>需要维护一个用来存放大量fd的数据结构（位图bitmap），这样会使得用户空间和内核空间在传递该结构时复制开销大</strong>。</p>
+</li>
+</ol>
+<h5 id="select实现"><a href="#select实现" class="headerlink" title="select实现"></a>select实现</h5><p><img src="https://img-blog.csdnimg.cn/20191225102740357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjU3OTA3Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">FD_ISSET</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>fdset<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//判断fd是否在集合中，在就返回非0值；否则，返回0</span>
+<span class="token keyword">void</span> <span class="token function">FD_CLR</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>fdset<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//将set清空</span>
+<span class="token keyword">void</span> <span class="token function">FD_SET</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>fdset<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//将fd设置到set集合中去</span>
+<span class="token keyword">void</span> <span class="token function">FD_ZERO</span><span class="token punctuation">(</span>fd_set <span class="token operator">*</span>fdset<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//将set清空</span>
+</code></pre>
+<p>上半部分主要做了两件事：创建了socket客户端；创建了5个文件描述符，并把这5个文件描述符放入到了数组中。</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//select方法的参数</span>
+<span class="token keyword">int</span> <span class="token function">select</span> <span class="token punctuation">(</span>
+    <span class="token keyword">int</span> nfds<span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//</span>
+    fd_set <span class="token operator">*</span>readfds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//读文件描述符集合</span>
+    fd_set <span class="token operator">*</span>writefds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//写文件描述符集合</span>
+    fd_set <span class="token operator">*</span>exceptfds<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//异常描述符集合</span>
+    <span class="token keyword">struct</span> timeval <span class="token operator">*</span>timeout <span class="token comment" spellcheck="true">//超时时间</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//我们更关心读文件操作，所以其他可以置为NULL，其中第二个参数&amp;rset是一个bitmap，用于表征哪些文件描述符是被启用的或者说被监听的。这个bitmap大小为1024位</span>
+</code></pre>
+<p>将rset从用户态拷贝到内核态，由内核态直接判断文件描述符是否有数据的操作，这样效率更高；</p>
+<p>以前判断时需要由用户态切换到内核态，所以效率低。</p>
+<p><img src="https://i.loli.net/2021/03/28/2UEct6fNIHXw1sd.png" alt="image-20210328205336927.png"></p>
+<blockquote>
+<p><strong>select函数执行流程：</strong></p>
+<p><strong>select是一个阻塞函数，当没有数据时，会一直阻塞在select那一行；</strong></p>
+<p><strong>当有数据时会将&amp;rset中对应的那一位置为1;</strong></p>
+<p><strong>select函数返回，不再阻塞；</strong></p>
+<p><strong>遍历文件描述符数组fds，和读事件集合rset对比，判断哪个fd被置位了；</strong></p>
+<p><strong>读取数据，然后处理。</strong></p>
+</blockquote>
+<p><strong>select函数的缺点：</strong></p>
+<p>①bitmap默认大小为1024，虽然可以调整，但还是有限度的；</p>
+<p>②rset每次循环都必须重新置位为0，不可重复使用；</p>
+<p>③尽管将rset从用户态拷贝到内核态，由内核态判断是否有数据，但还是有拷贝的开销；</p>
+<p>④当有数据时select就会返回，但是select函数并不知道哪个文件描述符有数据了，后面还需要再次对文件描述符数组进行遍历，效率比较低。</p>
+<h5 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h5><p>poll几乎和select原理相同，但是poll并非使用位图（fd_set）来记录每一个文件描述符，而是使用pollfd结构体（多个就采用链表），使得poll支持的文件描述符集合限制远大于select的1024（或2048）.</p>
+<p>poll本质上和select没有区别，它将用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态，如果设备就绪则在设备等待队列中加入一项并继续遍历，如果遍历完所有fd后没有发现就绪设备，则挂起当前进程，直到设备就绪或者主动超时，被唤醒后它又要再次遍历fd。这个过程经历了多次无谓的遍历。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">poll</span><span class="token punctuation">(</span><span class="token keyword">struct</span> pollfd <span class="token operator">*</span>fds<span class="token punctuation">,</span> nfds_t nfds<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> pollfd <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> fd<span class="token punctuation">;</span>                         <span class="token comment" spellcheck="true">// 需要被检测或选择的文件描述符</span>
+        <span class="token keyword">short</span> events<span class="token punctuation">;</span>                   <span class="token comment" spellcheck="true">// 对文件描述符fd上感兴趣的事件</span>
+        <span class="token keyword">short</span> revents<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">// 文件描述符fd上当前实际发生的事件</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> pollfd_t<span class="token punctuation">;</span>
+</code></pre>
+<p><strong>它没有最大连接数的限制，原因是它是基于链表来存储的，但是同样有一个缺点：</strong></p>
+<ol>
+<li>大量的fd的数组被整体复制于用户态和内核地址空间之间，而不管这样的复制是不是有意义。</li>
+<li>poll还有一个特点是“水平触发”，如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。</li>
+</ol>
+<h5 id="poll实现"><a href="#poll实现" class="headerlink" title="poll实现"></a>poll实现</h5><p><img src="https://img-blog.csdnimg.cn/20191225104248991.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjU3OTA3Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> pollfd <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> fd<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 文件描述符</span>
+        <span class="token keyword">short</span> events<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 在意的事件是什么，如果在于读就是POLLIN，如果在意写就是POLLOUT</span>
+        <span class="token keyword">short</span> revents<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//对于events的回馈，开始时为0，当有数据可读时就设置为POLLIN，类似于上面的rset</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> pollfd_t<span class="token punctuation">;</span>
+</code></pre>
+<p><img src="https://i.loli.net/2021/03/28/gwqGEMLz9ot3YmD.png" alt="image-20210328211029954.png"></p>
+<blockquote>
+<p><strong>poll的执行流程：</strong></p>
+<p><strong>将五个fd从用户态拷贝到内核态；</strong></p>
+<p><strong>poll为阻塞方法，执行poll方法，如果有数据会将fd对应的revents置为POLLIN；</strong></p>
+<p><strong>poll方法返回；</strong></p>
+<p><strong>循环遍历，查找哪个fd被置为了POLLIN</strong></p>
+<p><strong>将revents重置为0，便于复用；</strong></p>
+<p><strong>对置位的fd进行读取和处理</strong></p>
+</blockquote>
+<p>相对于select，poll解决了bitmap大小的限制，采用了数组；解决了rset不可重用的情况，后面由于二者原理相同，所以没有解决</p>
+<h5 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h5><p>相对于select和poll来说，epoll更加灵活，没有描述符限制。epoll使用一个文件描述符管理多个描述符，将用户关心的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">epoll_create</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> epoll_event <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">epoll_wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">struct</span> epoll_event <span class="token operator">*</span> events<span class="token punctuation">,</span> <span class="token keyword">int</span> maxevents<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>1、epoll_create函数先创建一个epoll句柄，参数size表明内核要监听的描述符数量再通过epoll_ctl()来注册一 个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait() 时便得到通知<br>2、IO的效率不会随着监视fd的数量的增长而下降。epoll不同于select和poll轮询的方式，而是通过每个fd定义的回调函数（底层红黑树）来实现的。只有就绪的fd才会执行回调函数。</p>
+<p>epoll优点：</p>
+<ol>
+<li><p>没有最大并发连接的限制，能打开的FD的上限远大于1024（1G的内存上能监听约10万个端口）。</p>
+</li>
+<li><p>效率提升，不是轮询的方式，不会随着FD数目的增加效率下降。只有活跃可用的FD才会调用callback函数；即Epoll最大的优点就在于它只管你“活跃”的连接，而跟连接总数无关，因此在实际的网络环境中，Epoll的效率就会远远高于select和poll。</p>
+</li>
+<li><p>内存拷贝，利用mmap()文件映射内存加速与内核空间的消息传递；即epoll使用mmap减少复制开销。</p>
+</li>
+</ol>
+<h5 id="epoll实现"><a href="#epoll实现" class="headerlink" title="epoll实现"></a>epoll实现</h5><p><img src="https://img-blog.csdnimg.cn/20191225105244845.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjU3OTA3Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>epoll_create(int size)返回一个文件描述符，该文件描述符描述的是内核中的一块内存区域；</p>
+<p>创建一个红黑树，最多监听size个节点，但是size只是给Linux内核的建议。</p>
+</li>
+<li><p>epoll_ctl()用来操作内核事件表；</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//op: EPOLL_CTL_ADD/MOD/DEL  红黑树的增删改操作</span>
+<span class="token comment" spellcheck="true">//fd：文件描述符</span>
+<span class="token comment" spellcheck="true">//设置event.events=EPOLLIN，监听这个文件描述符是否可读，表示是否客户端通过这个文件描述符向我请求连接</span>
+<span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> epoll_event <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//这个event中还包含一个结构体</span>
+<span class="token keyword">typedef</span> <span class="token keyword">union</span> epoll_data<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> fd<span class="token punctuation">;</span>
+    uint32_t u32<span class="token punctuation">;</span>
+    uint64_t u64<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> epoll_data_t<span class="token punctuation">;</span>
+<span class="token keyword">struct</span> epoll_event<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//events: EPOLLIN/OUT/ERR  读监听/写监听</span>
+    <span class="token comment" spellcheck="true">//文件描述符可读是说通过这个文件描述符能够从socket中读出数据，表示客户端向socket写数据了</span>
+    uint32_t events<span class="token punctuation">;</span> 
+    epoll_data_t data<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>epoll_wait()该函数返回就绪文件描述符的个数 。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">epoll_wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">struct</span> epoll_event <span class="token operator">*</span> events<span class="token punctuation">,</span> <span class="token keyword">int</span> maxevents<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>epoll_create(10)创建一个红黑树；</p>
+<p>epoll_ctl()在红黑树中添加元素，写入五个节点（epoll_event）;</p>
+<p>epoll_event为包含fd和event的结构体，与poll很类似；</p>
+<p>最后得到了epfd传到了下面的方法epoll_wait();</p>
+<p>epoll_wait()返回所监听的文件描述符满足条件的个数，并将满足的文件描述符放入创建的epoll_event数组中</p>
+</blockquote>
+<p>epoll是非阻塞的！！</p>
+<p><strong>Epoll与File Descriptor</strong></p>
+<p><img src="https://i.loli.net/2021/03/28/bIFg4z7AGSrOYxo.png" alt="image-20210328195206897.png"></p>
+<p>比如1976是一个文件或者一个socket，在不同的地方被open了两次，两个描述项分别被两个不同的进程指向，即两个进程都打开了同一个文件。还有，同一个进程中两个描述符都指向了同一个描述项，<code>dup()</code>复制一个描述符，指向同一个描述项。还可以通过fork()，进程A fork 一个子进程B，比如fd2都指向同一个描述项。</p>
+<p><img src="https://static.oschina.net/uploads/img/201604/21145832_RVDK.png" alt="输入图片说明"></p>
+<p><img src="https://static.oschina.net/uploads/img/201604/21145942_TmnB.png" alt="输入图片说明"></p>
+<p><img src="https://static.oschina.net/uploads/img/201604/21150044_PgJT.png" alt="输入图片说明"></p>
+<h4 id="信号驱动式IO"><a href="#信号驱动式IO" class="headerlink" title="信号驱动式IO"></a>信号驱动式IO</h4><p>信号驱动式I/O：首先我们允许Socket进行信号驱动IO,并安装一个信号处理函数，进程继续运行并不阻塞。当数据准备好时，进程会收到一个SIGIO信号，可以在信号处理函数中调用I/O操作函数处理数据。过程如下图所示：</p>
+<p><img src="https://i.loli.net/2021/03/28/GcJUyZWb7EQtPAo.png" alt="image-20210328173351586.png"></p>
+<h4 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h4><p>异步 IO 是基于事件和回调机制实现的，也就是应用操作之后会直接返回，不会堵塞在那里，当后台处理完成，操作系统会通知相应的线程进行后续的操作。</p>
+<p><strong>流程描述：</strong>用户进程发起aio_read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。然后，kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal或执行一个基于线程的回调函数来完成这次 IO 处理过程，告诉它read操作完成了。</p>
+<p><img src="https://i.loli.net/2021/03/28/4qnV9AbBLEwykJ1.png" alt="image-20210328143653337.png"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Yuhao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://yuhao1517.github.io/2021/03/28/%E5%B8%B8%E8%A7%81IO%E6%A8%A1%E5%9E%8B/">https://yuhao1517.github.io/2021/03/28/%E5%B8%B8%E8%A7%81IO%E6%A8%A1%E5%9E%8B/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Yuhao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/IO%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">IO模式</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/03/28/%E5%B8%B8%E8%A7%81IO%E6%A8%A1%E5%9E%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="HTTP与HTTPS">
+                        
+                        <span class="card-title">HTTP与HTTPS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yuhao
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/IO%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">IO模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/23/AQS%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="AQS源码分析">
+                        
+                        <span class="card-title">AQS源码分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yuhao
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AQS/">
+                        <span class="chip bg-color">AQS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="1819636482"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Yuhao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Yuhao1517" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:411963853@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=411963853" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 411963853" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
