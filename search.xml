@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>HTTP与HTTPS</title>
+      <title>常见IO模型</title>
       <link href="2021/03/28/%E5%B8%B8%E8%A7%81IO%E6%A8%A1%E5%9E%8B/"/>
       <url>2021/03/28/%E5%B8%B8%E8%A7%81IO%E6%A8%A1%E5%9E%8B/</url>
       
@@ -14,7 +14,7 @@
       
         <tags>
             
-            <tag> IO模式 </tag>
+            <tag> IO模型 </tag>
             
         </tags>
       
