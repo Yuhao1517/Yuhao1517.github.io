@@ -383,8 +383,8 @@ if (windowWidth > 768) {
                         <div class="summary block-with-text">
                             
                                 循环依赖及三级缓存Spring在启动过程中，使用到了三个map，称为三级缓存。
-一级缓存，保存singletonBean实例: bean name –&gt; bean instance
-二级缓存，保存早期未完全创建的Singleton实例
+一级缓存singletonObjects，存储的是所有创建好了的单例bean
+二级缓存earlySingletonObjects，完成实例化，但是还未进行属性填
                             
                         </div>
                         <div class="publish-info">

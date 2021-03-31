@@ -471,7 +471,7 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2k
                 </div>
                 
 
@@ -494,9 +494,9 @@ if (windowWidth > 768) {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="循环依赖及三级缓存"><a href="#循环依赖及三级缓存" class="headerlink" title="循环依赖及三级缓存"></a>循环依赖及三级缓存</h3><p>Spring在启动过程中，使用到了三个map，称为三级缓存。</p>
-<p><em>一级缓存，保存singletonBean实例: bean name –&gt; bean instance</em></p>
-<p><em>二级缓存，保存早期未完全创建的Singleton实例: bean name –&gt; bean instance</em></p>
-<p>三级缓存，保存singletonBean生产工厂: bean name –&gt; ObjectFactory</p>
+<p>一级缓存singletonObjects，存储的是所有创建好了的单例bean</p>
+<p>二级缓存earlySingletonObjects，完成实例化，但是还未进行属性填充及初始化的对象</p>
+<p>三级缓存singleFactories，提前暴露的一个单例工厂，二级缓存中存储的就是从这个工厂中获取到的对象。</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token keyword">private</span> B b<span class="token punctuation">;</span>
