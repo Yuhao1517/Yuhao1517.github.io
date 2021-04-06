@@ -539,7 +539,7 @@ if (windowWidth > 768) {
 <p>举个例子：</p>
 <p>我们先看下左边表格第二列Col2列的数据时如何查找的，如果我们希望查找where Col2 = 22的记录，我们在没加索引的情况下是按顺序从第一条记录查找，由此可知需要查找5次才能找到；</p>
 <p>如果对Col2字段加上索引后，我们假设使用最简单的二叉树作为索引存储方式，再次查找where Col2 = 22的记录这次只需要查找2次就能找到目标记录，效率提高十分明显。</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402123252525.png" alt="image-20210402123252525"></p>
+<p><img src="https://i.loli.net/2021/04/06/Ucv4mhoH6DCAtM8.png" alt="image-20210402123252525.png"></p>
 <h4 id="B-Tree和B-Tree"><a href="#B-Tree和B-Tree" class="headerlink" title="B-Tree和B+Tree"></a>B-Tree和B+Tree</h4><p>目前大部分数据库系统及文件系统都采用B-Tree或其变种B+Tree作为索引结构。</p>
 <h5 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h5><p> 为了描述B-Tree，首先定义一条数据记录为一个二元组[key, data]，key为记录的键值，对于不同数据记录，key是互不相同的；data为数据记录除key外的数据。那么B-Tree是满足下列条件的数据结构：</p>
 <ol>
@@ -556,17 +556,17 @@ if (windowWidth > 768) {
 <li>如果某个指针在节点node最右边且不为null，则其指向节点的所有key大于v(keym)，其中v(keym)为node的最后一个key的值。</li>
 <li>如果某个指针在节点node的左右相邻key分别是keyi和keyi+1且不为null，则其指向节点的所有key小于v(keyi+1)且大于v(keyi)。</li>
 </ol>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402124832674.png" alt="image-20210402124832674"></p>
+<p><img src="https://i.loli.net/2021/04/06/VCHQYrjFnyhB8dg.png" alt="image-20210402124832674.png"></p>
 <p>由于B-Tree的特性，在B-Tree中按key检索数据的算法非常直观：首先从根节点进行二分查找，如果找到则返回对应节点的data，否则对相应区间的指针指向的节点递归进行查找，直到找到节点或找到null指针，前者查找成功，后者查找失败。</p>
 <h5 id="B-Tree-1"><a href="#B-Tree-1" class="headerlink" title="B+Tree"></a>B+Tree</h5><p>B-Tree有许多变种，其中最常见的是B+Tree，例如MySQL就普遍使用B+Tree实现其索引结构。</p>
 <p>与B-Tree相比，B+Tree有以下不同点：</p>
 <p> 1、每个<strong>节点的指针上限为2d</strong>而不是2d+1。</p>
 <p> 2、内节点不存储data，只存储key；<strong>叶子节点不存储指针</strong>。</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402125331198.png" alt="image-20210402125331198"></p>
+<p><img src="https://i.loli.net/2021/04/06/DcOZCBkS3tTfEH8.png" alt="image-20210402125331198.png"></p>
 <p>由于并不是所有节点都具有相同的域，因此B+Tree中叶节点和内节点一般大小不同。这点与B-Tree不同，虽然B-Tree中不同节点存放的key和指针可能数量不一致，但是每个节点的域和上限是一致的，所以在实现中B-Tree往往对每个节点申请同等大小的空间。</p>
 <p><strong>带有顺序访问指针的B+Tree</strong></p>
 <p>一般在数据库系统或文件系统中使用的B+Tree结构都在经典B+Tree的基础上进行了优化，增加了顺序访问指针。</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402125442800.png" alt="image-20210402125442800"></p>
+<p><img src="https://i.loli.net/2021/04/06/5Hr6lZqUuYTBz1b.png" alt="image-20210402125442800.png"></p>
 <p>在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。做这个优化的目的是为了提高<strong>区间访问的性能</strong>，例如上图中如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。</p>
 <p>索引本身也很大，不可能全部存储在内存中，因此索引往往以<strong>索引文件</strong>的形式存储的磁盘上。这样的话，索引查找过程中就要产生<strong>磁盘I/O消耗</strong>，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中<strong>磁盘I/O操作次数的渐进复杂度</strong>。</p>
 <h4 id="B-Tree与B-Tree的区别"><a href="#B-Tree与B-Tree的区别" class="headerlink" title="B-Tree与B+Tree的区别"></a>B-Tree与B+Tree的区别</h4><h4 id="为什么使用B-Tree-B-Tree"><a href="#为什么使用B-Tree-B-Tree" class="headerlink" title="为什么使用B-Tree/B+Tree"></a>为什么使用B-Tree/B+Tree</h4><p>根据B-Tree的定义，可知检索一次最多需要访问h个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入。为了达到这个目的，在实际实现B-Tree还需要使用如下技巧：</p>
@@ -648,12 +648,12 @@ if (windowWidth > 768) {
 <ul>
 <li>这条sql语句应该如何执行呢？下面对Mysql5.6之前版本和之后版本进行分析。</li>
 </ul>
-<h4 id="Mysql5-6之前的版本"><a href="#Mysql5-6之前的版本" class="headerlink" title="Mysql5.6之前的版本"></a><strong>Mysql5.6之前的版本</strong></h4><p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402200454615.png" alt="image-20210402200454615"></p>
+<h4 id="Mysql5-6之前的版本"><a href="#Mysql5-6之前的版本" class="headerlink" title="Mysql5.6之前的版本"></a><strong>Mysql5.6之前的版本</strong></h4><p><img src="https://i.loli.net/2021/04/06/Ih6KvGl9CoE12qH.png" alt="image-20210402200454615.png"></p>
 <ul>
 <li>会忽略age这个字段，直接通过name进行查询，在(name,age)这棵树上查找到了两个结果，id分别为2,1，然后拿着取到的id值一次次的回表查询，因此这个过程需要<strong>回表两次</strong>。</li>
 </ul>
 <h4 id="Mysql5-6及之后版本"><a href="#Mysql5-6及之后版本" class="headerlink" title="Mysql5.6及之后版本"></a><strong>Mysql5.6及之后版本</strong></h4><p>5.6版本添加了索引下推这个优化，执行的过程如下图：</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402200646746.png" alt="image-20210402200646746"></p>
+<p><img src="https://i.loli.net/2021/04/06/52gtKFHy73Reoju.png" alt="image-20210402200646746.png"></p>
 <p>InnoDB并没有忽略age这个字段，而是在索引内部就判断了age是否等于20，对于不等于20的记录直接跳过，因此在(name,age)这棵索引树中只匹配到了一个记录，此时拿着这个id去主键索引树中回表查询全部数据，这个过程只需要回表一次。</p>
 <p><strong>总结：索引下推在非主键索引上的优化，可以有效减少回表的次数，大大提升了查询的效率。</strong></p>
 <p><strong>对于InnDB引擎只适用于二级索引，因为InnDB的聚簇索引会将整行数据读到InnDB的缓冲区，这样一来索引条件下推的主要目的减少IO次数就失去了意义。因为数据已经在内存中了，不再需要去读取了。</strong></p>
@@ -662,16 +662,16 @@ if (windowWidth > 768) {
 <p>比如有个联合索引 (b,c,d)</p>
 <p>在索引的排序上 , 是先按b排序 , 再按c排序 , 再按d排序</p>
 <p>比如有如下数据:</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402204619916.png" alt="image-20210402204619916"></p>
+<p><img src="https://i.loli.net/2021/04/06/hYcKloxNfIJQZLP.png" alt="image-20210402204619916.png"></p>
 <p>a 是主键 , b c d创建了联合索引</p>
 <p>生成的索引结构为:</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402203349288.png" alt="image-20210402203349288"></p>
+<p><img src="https://i.loli.net/2021/04/06/egHO46Azl1SnmCE.png" alt="image-20210402203349288.png"></p>
 <p>看最后的叶子节点数据的排序 , 先按第一行b 排序 , 再按第二行 c 排序 , 最后按第三行 d排序 , 紫色部分是主键</p>
 <p>查询的时候 , 先按a字段的查询 a相同的再按b的查询 b也相同的再按c的查询</p>
 <p>这样的索引构建方式及存储结构，所以联合索引只能从多列索引的第一列开始查找。所以如果你的查找条件不包含b列如（c,d）、(c）、(d)是无法应用索引的，以及跨列也是无法完全用到索引如(b,d)，只会用到b列索引。</p>
 <h3 id="最左前缀匹配原则"><a href="#最左前缀匹配原则" class="headerlink" title="最左前缀匹配原则"></a>最左前缀匹配原则</h3><p><strong>最左前缀匹配原则：</strong>在MySQL建立联合索引时会遵守最左前缀匹配原则，即最左优先，在检索数据时从联合索引的最左边开始匹配。</p>
 <p>举例：创建一个（a,b）的联合索引，那么它的索引树就是下图的样子。</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402210211626.png" alt="image-20210402210211626"></p>
+<p><img src="https://i.loli.net/2021/04/06/UoEPveqNyw7ArlL.png" alt="image-20210402210211626.png"></p>
 <p>可以看到a的值是有顺序的，1，1，2，2，3，3，而b的值是没有顺序的1，2，1，4，1，2。但是我们又可发现a在等值的情况下，b值又是按顺序排列的，但是这种顺序是相对的。这是因为MySQL创建联合索引的规则是首先会对联合索引的最左边第一个字段排序，在第一个字段的排序基础上，然后在对第二个字段进行排序。所以b=2这种查询条件没有办法利用索引。</p>
 <p><strong>小总结</strong></p>
 <p>假设index(a,b,c)</p>
@@ -866,8 +866,8 @@ Affected <span class="token keyword">rows</span> : <span class="token number">1<
 <p>①<strong>binlog输出线程</strong>:每当有从库连接到主库的时候，主库都会创建一个线程然后发送binlog内容到从库。在从库里，当复制开始的时候，从库就会创建两个线程进行处理：<br>②<strong>从库I/O线程</strong>:当START SLAVE语句在从库开始执行之后，从库创建一个I/O线程，该线程连接到主库并请求主库发送binlog里面的更新记录到从库上。从库I/O线程读取主库的binlog输出线程发送的更新并拷贝这些更新到本地文件，其中包括relay log文件。</p>
 <p>③<strong>从库的SQL线程</strong>:从库创建一个SQL线程，这个线程读取从库I/O线程写到relay log的更新事件并执行。</p>
 <p>可以知道，对于每一个主从复制的连接，都有三个线程。拥有多个从库的主库为每一个连接到主库的从库创建一个binlog输出线程，每一个从库都有它自己的I/O线程和SQL线程。</p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402212313572.png" alt="image-20210402212313572"></p>
-<p><img src="C:\Users\于浩\AppData\Roaming\Typora\typora-user-images\image-20210402212320957.png" alt="image-20210402212320957"></p>
+<p><img src="https://i.loli.net/2021/04/06/aTboLGCVnyjmhzQ.png" alt="image-20210402212313572.png"></p>
+<p><img src="https://i.loli.net/2021/04/06/sZnjI53VwoYKLOA.png" alt="image-20210402212320957.png"></p>
 
                 
             </div>
@@ -1152,13 +1152,13 @@ Affected <span class="token keyword">rows</span> : <span class="token number">1<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/16/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/">
+                <a href="/2021/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="HTTP与HTTPS协议详解">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Java多线程">
                         
-                        <span class="card-title">HTTP与HTTPS协议详解</span>
+                        <span class="card-title">Java多线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1182,12 +1182,16 @@ Affected <span class="token keyword">rows</span> : <span class="token number">1<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/HTTP/">
-                        <span class="chip bg-color">HTTP</span>
+                    <a href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">Java多线程</span>
                     </a>
                     
-                    <a href="/tags/HTTPS/">
-                        <span class="chip bg-color">HTTPS</span>
+                    <a href="/tags/%E5%90%8C%E6%AD%A5/">
+                        <span class="chip bg-color">同步</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                        <span class="chip bg-color">线程池</span>
                     </a>
                     
                 </div>
