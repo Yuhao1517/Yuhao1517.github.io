@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring底层源码流程, Yuhao&#39;s Blog">
+    <meta name="keywords" content="JVM复习, Yuhao&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Spring底层源码流程 | Yuhao&#39;s Blog</title>
+    <title>JVM复习 | Yuhao&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -317,12 +317,12 @@ if (windowWidth > 768) {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring底层源码流程</h1>
+                    <h1 class="description center-align post-title">JVM复习</h1>
                 </div>
             </div>
         </div>
@@ -438,8 +438,8 @@ if (windowWidth > 768) {
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Spring/">
-                                <span class="chip bg-color">Spring</span>
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -454,7 +454,7 @@ if (windowWidth > 768) {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-08
+                    2021-04-12
                 </div>
                 
 
@@ -463,14 +463,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    5.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    18 分
                 </div>
                 
 
@@ -485,8 +485,210 @@ if (windowWidth > 768) {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://i.loli.net/2021/04/09/kPfDv9UpdYNrbK7.png" alt="Spring创建Bean过程.png"></p>
-<p><img src="https://i.loli.net/2021/04/08/6DJKoQFIhiypVA3.png" alt="Spring.png"></p>
+                <h4 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDIwLmNuYmxvZ3MuY29tL2ktYmV0YS8xMzgzMzY1LzIwMjAwMy8xMzgzMzY1LTIwMjAwMzEwMTY0NjQyNTIwLTY5ODA3MzUxMy5wbmc?x-oss-process=image/format,png" alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/12/GSpx9N28R67kQKb.png" alt="image-20210412102903923.png"></p>
+<h5 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h5><p>程序计数器（Program Counter Register）是一块较小的内存空间，它可以看作是当前线程所执行的字节码的<strong>行号指示器</strong>。</p>
+<p>用来存储指向下一条指令的地址，也即将要执行的指令代码。</p>
+<p>为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程之间计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。</p>
+<h5 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h5><p>栈是运行时单位，而堆是存储的单位</p>
+<p>即：栈解决程序的运行问题，即程序如何执行，或者说如何处理数据。堆解决的是数据存储的问题，即数据怎么放、放在哪。</p>
+<p>Java虚拟机栈（Java Virtual Machine Stack）也是线程私有的，它的生命周期与线程相同。</p>
+<p>虚拟机栈描述的是Java方法执行的线程内存模型：每个方法被执行的时候，Java虚拟机都会同步创建一个栈帧（Stack Frame）用于存储<strong>局部变量表、操作数栈、动态连接、方法出口</strong>等信息。每一个方法被调用直至执行完毕的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</p>
+<p>静态变量与局部变量的对比</p>
+<p>静态变量在准备阶段设置零值，在初始化阶段赋初始值，而局部变量不存在系统初始化的过程，必须人为初始化。</p>
+<h5 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h5><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别只是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则是为虚拟机使用到的本地（Native）方法服务。</p>
+<h5 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h5><p>Java堆（Java Heap）是虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例。</p>
+<p><strong>对象分配过程：TLAB (Thread Local Allocation Buffer)</strong></p>
+<p>为什么要有TLAB？</p>
+<p>堆区是线程共享区域，任何线程都可以访问到堆区中的共享数据，由于对象的创建在JVM中非常频繁，因此在并发环境下从堆区中划分内存是线程不安全的。</p>
+<p>JVM为每个线程分配了一个私有缓存区域，它包含在Eden空间内，以提升对象分配时的效率。</p>
+<p>尽管不是所有的对象实例都能在TLAB中成功分配内存，但JVM确实是将TLAB作为内存分配的首选。</p>
+<p>默认情况下TLAB占用内存很小，一旦对象在TLAB空间分配内存失败，JVM就会尝试通过使用加锁机制确保数据操作的原子性。</p>
+<h5 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h5><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的<strong>类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据</strong>。</p>
+<h4 id="加载器与类加载过程"><a href="#加载器与类加载过程" class="headerlink" title="加载器与类加载过程"></a>加载器与类加载过程</h4><p><img src="https://i.loli.net/2021/04/12/oLwf8ZDcuFR3BGE.png" alt="image-20210412090528677.png"></p>
+<h4 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h4><p><img src="https://i.loli.net/2021/04/12/g9muyVesI5PfFAH.png" alt="image-20210412095711436.png"></p>
+<h5 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h5><ol>
+<li><p>通过一个类的全限定名获取定义此类的二进制字节流。</p>
+</li>
+<li><p>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</p>
+<p>就是将类信息、常量、静态变量、即时编译器编译后的代码等数据存放到方法区。</p>
+</li>
+<li><p>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各个数据的访问入口。</p>
+</li>
+</ol>
+<h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><p>确保Class文件的字节流中包含信息符合当前虚拟机要求，保证被加载类的正确性。</p>
+<h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>为类变量分配内存并且设置该类变量的默认初始值，即零值。</p>
+<p>这里不包含用final修饰的static，因为<strong>final在编译的时候就会被分配了</strong>，准备阶段会显式初始化。</p>
+<p>这里不会为实例变量分配初始化，类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中。</p>
+<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><p>将常量池中的符号引用转为直接引用的过程。</p>
+<p>事实上，解析操作往往会伴随着JVM在执行完初始化之后再执行。</p>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><ul>
+<li>初始化阶段就是执行类构造器方法<clinit>()的过程。</li>
+<li>此方法不需定义，是javac编译器自动收集类中的所有类变量的赋值动作和静态代码块中的语句合并而来。为静态变量赋初始值、执行静态代码块。</li>
+<li><clinit>()不同于类的构造器</li>
+<li>若该类具有父类，JVM会保证子类的<clinit>()执行前，父类的<clinit>()已经执行完毕。</li>
+<li>虚拟机必须保证一个类的<clinit>()方法在多线程下被同步加锁。</li>
+</ul>
+<h4 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h4><p>双亲委派、沙箱安全</p>
+<p>在JVM中表示两个class对象是否为同一个类存在两个必要条件：</p>
+<ul>
+<li>类的全限定类名一致</li>
+<li>加载这个类的ClassLoader必须相同</li>
+</ul>
+<h4 id="对象的创建过程"><a href="#对象的创建过程" class="headerlink" title="对象的创建过程"></a>对象的创建过程</h4><p>（1）判断对象对应的类是否已经加载</p>
+<p>首先判断对象对应的类是否已经被加载、链接、初始化过，如果没有，先进行类加载过程。</p>
+<p>（2）为对象分配内存</p>
+<p>类加载检查通过后，为对象分配内存，如果内存是规整的，所有被使用过的内存都被放在一边，空闲的内存放在一边，中间放着一个指针作为分界点的指示器，那所分配的内存就是把那个指针向空闲的方向移动一段与对象大小相等的距离，这种分配方式称为指针碰撞。</p>
+<p>如果内存不规整，虚拟机必须维护一个列表，记录哪些内存块是可用的，在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种方法称为空闲列表。</p>
+<p>选择哪种分配方式由Java堆是否规整决定，而Java堆是否规整又由所采用的垃圾收集器是否带有空间压缩整理（Compact）的能力决定。因此，当使用Serial、ParNew等带压缩整理过程的收集器时，系统采用的分配算法是指针碰撞，既简单又高效；而当使用CMS这种基于清除（Sweep）算法的收集器时，理论上就只能采用较为复杂的空闲列表来分配内存。</p>
+<p>（3）处理并发安全问题</p>
+<p>对象创建在虚拟机中是非常频繁的行为，即使仅仅修改一个指针所指向的位置，在并发情况下也并不是线程安全的，可能出现正在给对象 A分配内存，指针还没来得及修改，对象B又同时使用了原来的指针来分配内存的情况。</p>
+<p>解决这一问题有两个可选方案：</p>
+<ul>
+<li>采用CAS配上失败重试的方式保证更新操作的原子性</li>
+<li>每个线程在Java堆中预先分配一小块内存，称为本地线程分配缓冲TLAB</li>
+</ul>
+<p>（4）初始化分配到的空间</p>
+<p>内存分配完成之后，虚拟机必须将分配到的内存空间（不包含对象头）都初始化为零值。保证对象的实例字段在Java代码中可以不赋初始值就直接使用。</p>
+<p>（5）设置对象头</p>
+<p>（6）执行init()方法进行初始化</p>
+<h4 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h4><p><img src="https://i.loli.net/2021/04/12/y8LBsGMzQKiPWDw.png" alt="image-20210412115214355.png"></p>
+<p><img src="https://i.loli.net/2021/04/12/NDqmSEvXrU3IQi1.png" alt="image-20210412115251451.png"></p>
+<p><strong>Mark Word</strong> </p>
+<p><img src="https://i.loli.net/2021/04/12/moRzLuEHTrd3SbY.png" alt="image-20210317155612923.png"></p>
+<h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><p>标记阶段：引用计数法、可达性分析</p>
+<p>清除阶段：标记清除算法、标记整理算法、复制算法</p>
+<h5 id="对象存活判断"><a href="#对象存活判断" class="headerlink" title="对象存活判断"></a>对象存活判断</h5><p>怎么判断哪些是存活对象，哪些是死亡对象，怎么判断是不是垃圾？</p>
+<p>内存中已经不再被使用到的空间就是垃圾，判断对象存活一般有两种方式：引用计数法和可达性分析。</p>
+<p><strong>引用计数法</strong>：在对象中添加一个引用计数器，每当有一个地方引用它时，计数器就加一，当引用失效时，计数器就减一，任何时刻计数器为零的对象就是不能再被使用的。（有循环引用问题）</p>
+<p><strong>可达性分析</strong>：通过一系列称为GCRoots的根对象作为起始节点集，从这些节点开始，根据引用关系向下搜索，搜索所走过的路径称为引用链，如果某个对象到GCRoots间没有任何引用链相连，或者说从GCRoots到这个对象不可达时，则证明这个对象是不可能再被使用的。</p>
+<p><strong>GCRoots包括以下元素</strong>：</p>
+<ul>
+<li><strong>虚拟机栈中引用的对象</strong></li>
+<li><strong>本地方法栈引用的对象</strong></li>
+<li><strong>方法区中静态属性引用的对象</strong></li>
+<li><strong>方法区中常量引用的对象</strong></li>
+<li><strong>所有被同步锁synchronized持有的对象</strong></li>
+</ul>
+<h5 id="finalization机制"><a href="#finalization机制" class="headerlink" title="finalization机制"></a>finalization机制</h5><p>当垃圾回收期发现没有引用指向一个对象，即垃圾回收此对象前总会先调用这个对象的finalize()方法。</p>
+<p>判定一个对象是否可回收，至少要经历两次标记过程：</p>
+<p>如果对象到GCRoots没有引用链，则进行第一次标记，然后进行筛选，判断此对象是否有必要执行finalize()，如果没有重写finalize()或者finalize()方法已经被调用过，则对象不能被复活，如果重写了finalize()方法且还未执行过，如果在finalize()方法中与引用链上的任何一个对象建立了联系，那么第二次标记时，对象就不会被回收。</p>
+<h5 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h5><p><strong>标记清除算法</strong></p>
+<p>缺点：第一个是执行效率不稳定，如果堆中包含大量对象，而且其中大部分需要回收，这时必须进行大量标记和清除的动作，需要停止整个应用程序，导致用户体验差。第二个是会产生大量不连续的内存碎片，碎片太多导致在以后需要分配较大的对象时无法找到足够的连续内存而不得不提前触发另一次垃圾回收操作。</p>
+<p><strong>复制算法</strong></p>
+<p>将内存空间分为两块，每次只使用其中的一块，在垃圾回收时将正在使用的内存中的存活对象复制到未被使用的内存块中，之后清除正在使用的内存块的所有对象，交换两个内存的角色，最后完成垃圾回收。</p>
+<p>优缺点：没有内存碎片问题，但是浪费内存空间。</p>
+<p>适合垃圾对象特别多，存活对象很少的场景，比如年轻代的Survivor0和Survivor1区。</p>
+<p><strong>标记整理算法</strong></p>
+<p>复制算法在对象存活率较高时就要进行较多的复制操作，效率就会降低。比如老年代就不适合复制算法，而是采用标记整理算法。</p>
+<p>标记整理和标记清除算法一样，但是不是直接对可回收对象进行清理，而是让所有存活对象都向内存空间一端移动，然后直接清理掉边界以外的内存。</p>
+<p>优缺点：内存空间是规整的，不会产生内存碎片，但是移动的过程需要暂停其他进程，而且如果对象被其他对象引用，还需要调整引用的地址。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>标记清除</th>
+<th>标记整理</th>
+<th>复制算法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>速度</td>
+<td>中等</td>
+<td>最慢</td>
+<td>最快</td>
+</tr>
+<tr>
+<td>空间开销</td>
+<td>少</td>
+<td>少</td>
+<td>大</td>
+</tr>
+<tr>
+<td>移动对象</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p><strong>分代收集算法</strong></p>
+<p>年轻代：对象生命周期短，存活率低，朝生夕死，垃圾回收频繁。</p>
+<p>这种情况复制算法速度是最快的。</p>
+<p>老年代：对象生命周期长，存活率高，回收不频繁。</p>
+<p>这种情况存在大量存活率高的对象，一般是标记清除或者标记整理。</p>
+<h5 id="内存溢出与内存泄漏"><a href="#内存溢出与内存泄漏" class="headerlink" title="内存溢出与内存泄漏"></a>内存溢出与内存泄漏</h5><p>内存溢出就是没有空闲内存，代码中创建了大量的对象，并且长时间不能被垃圾回收器收集。</p>
+<p>内存泄漏就是对象不会再被程序用到了，但是GC又不能回收他们。比如单例模式，单例的生命周期和应用程序是一样长的，所以单例程序中如果持有外部对象的引用，那么这个外部对象是不能被回收的；数据库连接、IO 连接需要手动close，否则不能被回收。</p>
+<h5 id="强软弱虚"><a href="#强软弱虚" class="headerlink" title="强软弱虚"></a><strong>强软弱虚</strong></h5><p><strong>强引用</strong>：类似Object obj = new Object()这种普遍存在的引用赋值，这种引用关系为强引用，只要强引用关系存在就不会被回收。</p>
+<p><strong>软引用</strong>：在系统将要发生内存溢出前，将把这些软引用对象进行回收。</p>
+<p><strong>弱引用</strong>：每次垃圾回收时，无论内存空间是否足够，都会回收掉被弱引用关联的对象。</p>
+<p><strong>虚引用</strong>：一个对象是否有虚引用的存在，对其生存时间没有影响，也无法通过虚引用来获得一个对象的实例，设置虚引用的目的就是在这个对象被回收时收到一个系统通知。</p>
+<h5 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h5><p>JDK8默认使用的垃圾回收期为<strong>Parallel Scavenge + Parallel Old</strong></p>
+<p><img src="https://i.loli.net/2021/04/12/gxm1tseOyY4qKuU.png" alt="image-20210412153331743.png"></p>
+<p><img src="https://i.loli.net/2021/04/12/X46i2mFkg1WKpoN.png" alt="clip_image002.png"></p>
+<p><strong>CMS回收器：低延迟</strong></p>
+<p>CMS收集器的关注点是尽可能缩短垃圾收集时用户线程的停顿时间。采用标记清除算法，也会STW。</p>
+<p>CMS回收分为四个步骤：初始标记、并发标记、重新标记、并发清除。</p>
+<p><img src="https://i.loli.net/2021/04/12/XKDEuL6Qb7meH5B.png" alt="image-20210412154144242.png"></p>
+<p>（1）初始标记</p>
+<p>需要STW，初始标记仅仅只是标记一下GCRoots直接关联到的对象，速度很快。</p>
+<p>（2）并发标记</p>
+<p>从GCRoots的直接关联对象开始遍历整个对象图的过程，这个过程耗时比较长，但是不需要停顿用户进程，可以与垃圾收集线程一起并发执行。</p>
+<p>（3）重新标记</p>
+<p>需要STW，修正并发标记阶段，因用户进程继续运作导致标记产生变动的那一部分对象的标记记录。停顿时间通常比初始标记时间要长，但是远小于并发标记的时间。</p>
+<p>（4）并发清理</p>
+<p>清除标记阶段已经判断死亡的对象，由于不需要移动存活对象，所以可以与用户进程并发执行。</p>
+<p><strong>缺点</strong>：因为采用了标记清除算法，所以不可避免会产生内存碎片。另外，CMS无法处理浮动垃圾，有可能出现“Con-current Mode<br>Failure”失败进而导致另一次完全“Stop The World”的Full GC的产生。</p>
+<p><strong>浮动垃圾：</strong></p>
+<blockquote>
+<p>在CMS的并发标记和并发清理阶 段，用户线程是还在继续运行的，程序在运行自然就还会伴随有新的垃圾对象不断产生，但这一部分 垃圾对象是出现在标记过程结束以后，CMS无法在当次收集中处理掉它们，只好留待下一次垃圾收集 时再清理掉。这一部分垃圾就称为“浮动垃圾”。</p>
+</blockquote>
+<blockquote>
+<p>重新标记 的作用只是修改之前 并发标记 所获得的不可达对象，所以是没有办法处理 “浮动垃圾” 的。</p>
+</blockquote>
+<p><strong>G1垃圾回收器</strong></p>
+<p>G1是一个并行回收器，它把堆内存分割为很多不相关的区域Region，使用不同的Region来表示Eden、幸存者0区、幸存者1区，老年代。</p>
+<p>G1整体上采用标记整理算法，局部是通过复制算法，不会产生内存碎片。</p>
+<p>优势：</p>
+<p>①<strong>空间整合</strong>：内存回收是以region为单位的，Region之间是复制算法，但整体上实际可以看作是标记整理，两种算法都可以避免内存碎片，利于程序的长时间运行，分配大对象时不会因为无法找到连续内存空间而提前触发下一次GC。</p>
+<p>②<strong>可预测的停顿时间模型</strong>：用户可以指定停顿时间。</p>
+<p><img src="https://i.loli.net/2021/04/12/CphTWsG4mgbxr2U.png" alt="image-20210412160628211.png"></p>
+<p>G1回收器将整个JVM堆划分为约2048个大小相等的独立的Region块，每个Region可以根据需要扮演新生代的Eden空间、Survivor空间或者老年代空间，收集器对不同的Region采用不同的策略去处理。Region中还有一类特殊的Humongous区域，专门用来存储大对象，只要超过了一个Region容量一半的对象即可判定为大对象，而对于那些超过了整个Region容量的超级大对象，将会被存放在N个连续的Humongous Region之中。</p>
+<p><strong>设置Humongous区的原因：</strong>对于堆中的大对象，默认会直接被分配到老年代，但是如果它是一个短期存在的大对象，就会对垃圾收集器产生负面影响。如果一个H区装不下一个大对象，那么G1就寻找连续的H区来存储。</p>
+<p>G1垃圾回收器的Remembered Set <strong>(记忆集)</strong></p>
+<blockquote>
+<p>一个对象被不同区域引用的问题？</p>
+<p>一个Region中的对象可能被其他任意Region中对象引用，判断对象存活时，是否需要扫描整个Java堆才能保证准确？</p>
+<p>回收新生代也不得不同时扫描老年代?</p>
+</blockquote>
+<p>解决方法：</p>
+<p>无论G1还是其他分代收集器，JVM都是使用记忆集来避免全局扫描。</p>
+<p>每个Region都有一个对应的记忆集，这些记忆集会记录下别的Region指向自己的指针。</p>
+<p><img src="https://i.loli.net/2021/04/12/yDla1V5dS8MQG9K.png" alt="image-20210412161212514.png"></p>
+<p>如果我们不去计算用户线程运行过程中的动作（如使用写屏障维护记忆集的操作），G1收集器的运作过程大致可划分为以下四个步骤：</p>
+<p><strong>初始标记</strong>：仅仅只是标记一下GC Roots能直接关联到的对象。这个阶段需要停顿线程，但耗时很短。<br><strong>并发标记</strong>：从GC Root开始对堆中对象进行可达性分析，递归扫描整个堆里的对象图，找出要回收的对象，这阶段耗时较长，但可与用户程序并发执行。<br><strong>最终标记</strong>：修正并发标记期间，因程序运行导致标记发生变化的那一部分对象。<br><strong>筛选回收</strong>：负责更新Region的统计数据，对各个Region的回收价值和成本进行排序，根据用户所期望的停顿时间来制定回收计划，可以自由选择任意多个Region构成回收集，然后把决定回收的那一部分Region的存活对象复制到空的Region中，再清理掉整个旧Region的全部空间。这里的操作涉及存活对象的移动，是必须暂停用户线程，由多条收集器线程并行完成的。</p>
+<h4 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h4><p><strong>对象优先在Eden分配</strong></p>
+<p>大多数情况下，对象在新生代Eden区中分配，当Eden区没有足够空间进行分配时，虚拟机将发起一次Minor GC；</p>
+<p><strong>大对象直接进入老年代</strong></p>
+<p>大对象就是指需要大量连续内存空间的对象，比如很长的字符串或者元素数量很大的数组。</p>
+<p><strong>长期存活的对象进入老年代</strong></p>
+<p>虚拟机给每个对象定义了一个对象年龄计数器，存储在对象头中，对象通常在Eden区里诞生，如果经过第一次MinorGC后仍然活着，并且能够被Survivor容纳的话，该对象会被移动到Survivor空间中，并且将其对象年龄设为1岁，对象在Survivor区中每熬过一次Minor GC，年龄就增加1岁，当增加到15岁就会被晋升到老年代中。</p>
+<p><strong>动态对象年龄判定</strong></p>
+<p>如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一半，年龄大于等于该年龄的对象就可以进入老年代。</p>
+<p><strong>空间分配担保</strong></p>
+<p><strong>在发生Minor GC之前，虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象总空间</strong>，如果这个条件成立，那这一次Minor GC可以确保是安全的，如果不成立，虚拟机会先查看是否允许担保失败，如果不允许，就直接Full GC。如果允许，那么会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，则尝试进行一次Minor GC，如果小于，那这时就要改为进行一次Full GC。</p>
+<p><strong>Minor GC</strong></p>
+<p>当年轻代（Eden区）满时就会触发 Minor GC，这里的年轻代满指的是 Eden区满。<strong>Survivor 满不会触发 Minor GC 。</strong></p>
+<p><strong>老年代的垃圾收集</strong></p>
+<p>Major GC，指目标只是老年代的垃圾收集。目前只有CMS收集器会有单 独收集老年代的行为。</p>
+<p>所以Major GC使用的是标记清除算法。</p>
+<p><strong>什么时候触发FullGC？</strong></p>
+<p>Full GC：收集整个Java堆和方法区的垃圾收集。会造成很大的系统资源开销，应对尽量避免。</p>
+<p>Full GC的时候会先触发Minor GC</p>
+<ul>
+<li>调用System.gc时，系统建议执行Full GC，但是不一定会执行。</li>
+<li>老年代空间不足时会触发Full GC</li>
+<li>永久代满了也会触发Full GC</li>
+</ul>
 
                 
             </div>
@@ -513,7 +715,7 @@ if (windowWidth > 768) {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yuhao1517.github.io/2021/04/08/Spring%E5%BA%95%E5%B1%82%E6%BA%90%E7%A0%81%E6%B5%81%E7%A8%8B/">https://yuhao1517.github.io/2021/04/08/Spring%E5%BA%95%E5%B1%82%E6%BA%90%E7%A0%81%E6%B5%81%E7%A8%8B/</a>
+                    <a href="https://yuhao1517.github.io/2021/04/12/JVM%E5%A4%8D%E4%B9%A0/">https://yuhao1517.github.io/2021/04/12/JVM%E5%A4%8D%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,8 +753,8 @@ if (windowWidth > 768) {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Spring/">
-                                    <span class="chip bg-color">Spring</span>
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -722,9 +924,10 @@ if (windowWidth > 768) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/12/JVM%E5%A4%8D%E4%B9%A0/">
                     <div class="card-image">
@@ -742,9 +945,9 @@ if (windowWidth > 768) {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -753,6 +956,7 @@ if (windowWidth > 768) {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -771,13 +975,13 @@ if (windowWidth > 768) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/07/Spring%E4%B8%AD@Autowired%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86/">
+                <a href="/2021/04/08/Spring%E5%BA%95%E5%B1%82%E6%BA%90%E7%A0%81%E6%B5%81%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Spring中@Autowired注解原理">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Spring底层源码流程">
                         
-                        <span class="card-title">Spring中@Autowired注解原理</span>
+                        <span class="card-title">Spring底层源码流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -788,7 +992,7 @@ if (windowWidth > 768) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
                             </span>
                         <span class="publish-author">
                             
@@ -801,8 +1005,8 @@ if (windowWidth > 768) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Autowired/">
-                        <span class="chip bg-color">Autowired</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
