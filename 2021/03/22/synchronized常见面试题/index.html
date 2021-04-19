@@ -463,14 +463,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -486,6 +486,8 @@ if (windowWidth > 768) {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><img src="https://snailclimb.gitee.io/javaguide/docs/java/multi-thread/images/interview-questions/synchronized%E5%85%B3%E9%94%AE%E5%AD%97.png" alt="img"></p>
+<p>Synchronized底层是JVM层面的，JVM通过进入、退出对象监视器Monitor来实现对方法、同步块的同步的，而对象监视器的本质依赖于底层操作系统的互斥锁实现。</p>
+<p>具体实现是在编译之后，在同步方法调用之前加入一个monitor.enter指令，在退出方法和异常处插入一个monitor.exit指令，对于没有获取到锁的线程将会阻塞到方法入口，直到获取锁的线程monitor.exit之后才能尝试获取锁。</p>
 <h3 id="1、说说自己对于synchronized关键字的了解"><a href="#1、说说自己对于synchronized关键字的了解" class="headerlink" title="1、说说自己对于synchronized关键字的了解"></a>1、说说自己对于synchronized关键字的了解</h3><p><strong><code>synchronized</code> 关键字解决的是多个线程之间访问资源的同步性，<code>synchronized</code>关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。</strong></p>
 <p>在Java早期版本中，synchronized属于重量级锁，一个线程获取到锁，其他线程都被阻塞挂起，这是十分消耗性能的，因为挂起或者唤醒一个线程都需要操作系统帮忙完成，而操作系统实现线程之间的切换需要从用户态转换到内核态，这个状态之间的转换需要相对比较长的时间，成本相对较高。</p>
 <p>但是在Java 6 后，官方对synchronized进行了较大的优化，引入 了如自旋锁、偏向锁、轻量级锁等技术（具体不再赘述，详细可以看前面《Java多线程》这篇文章），所以现在synchronized的锁效率已经优化的很不错了。</p>

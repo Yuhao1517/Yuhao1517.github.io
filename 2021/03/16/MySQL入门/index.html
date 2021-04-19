@@ -463,14 +463,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.6k
+                    9.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    31 分
+                    33 分
                 </div>
                 
 
@@ -579,6 +579,14 @@ if (windowWidth > 768) {
 <p>​    或</p>
 <p>​    dmax = floor(pagesize / (keysize + datasize + pointsize)) - 1 (pagesize – dmax &lt; pointsize)</p>
 <p>​    floor表示向下取整。由于<strong>B+Tree内节点去掉了data域，因此可以拥有更大的出度，拥有更好的性能。</strong></p>
+<p><strong>B-树和B+树的区别</strong></p>
+<blockquote>
+<p>①<strong>B+树内节点不存储数据，所有 data 存储在叶节点导致查询时间复杂度固定为 log n。而B-树查询时间复杂度不固定，与 key 在树中的位置有关，最好为O(1)。</strong></p>
+<p>②<strong>B+树叶节点两两相连可大大增加区间访问性，可使用在范围查询等，而B-树每个节点 key 和 data 在一起，则无法区间查找。</strong></p>
+<p>由于B+树的叶子节点的数据都是使用链表连接起来的，而且他们在磁盘里是顺序存储的，所以当读到某个值的时候，磁盘预读原理就会提前把这些数据都读进内存，使得范围查询和排序都很快。</p>
+<p>③<strong>B+树更适合外部存储。由于内节点无 data 域，每个节点能索引的范围更大更精确</strong></p>
+<p>由于B树节点内部每个key都带着data数据，而B+树内节点只存储key的副本，真实的key和data域都在叶子节点存储，由于磁盘IO数据大小是固定的，在一次IO中，单个元素越小，量就越大，这就意味着B+树单次磁盘IO的信息量大于B树，能够读出的索引值更多，从而减少查询时需要的IO次数。</p>
+</blockquote>
 <h3 id="MySQL索引实现"><a href="#MySQL索引实现" class="headerlink" title="MySQL索引实现"></a>MySQL索引实现</h3><p> 在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本文主要讨论MyISAM和InnoDB两个存储引擎的索引实现方式。</p>
 <h4 id="MyISAM索引实现"><a href="#MyISAM索引实现" class="headerlink" title="MyISAM索引实现"></a>MyISAM索引实现</h4><p>MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数据记录的<strong>地址</strong>。下图是MyISAM索引的原理图：</p>
 <p><strong>主键索引：</strong></p>
@@ -752,6 +760,24 @@ if (windowWidth > 768) {
 <li>数据重复且分布平均的表字段。 过滤性不好的不适合建立索引</li>
 </ul>
 <p>因此应该只为最经常查询和最经常排序的数据列建立索引。 注意，如果某个数据列包含许多重复的内容，为它建立索引就没有太大的实际效果。</p>
+<blockquote>
+<p><strong>拓展</strong></p>
+<p><strong>如何给长字符串加索引？</strong></p>
+<p>长字符串建立索引非常消耗空间，性能也不高。</p>
+<p>一般有几种解决方法</p>
+<p>①<strong>为字段加前缀索引</strong></p>
+<p>比如现在表User 中存在email字段，为长字符串。如果email字段上没有索引，那么这个语句只能做全表扫描</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token number">f1</span><span class="token punctuation">,</span><span class="token number">f2</span> <span class="token keyword">from</span> <span class="token keyword">User</span> <span class="token keyword">where</span> email <span class="token operator">=</span> <span class="token string">'1540984562@qq.com'</span><span class="token punctuation">;</span>
+</code></pre>
+<p>可以加前缀索引，前缀索引占用的空间更小，但是会增加扫描的次数，定义好长度，就可以做到既节省空间，又不额外增加太多查询成本。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> <span class="token keyword">User</span> <span class="token keyword">add</span> <span class="token keyword">index</span> index2<span class="token punctuation">(</span>email<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>但是<strong>如果使用了前缀索引就相当于放弃掉了覆盖索引对查询的性能优化！！！</strong></p>
+<p>如查询语句只返回id和email字段，如果使用整个字符串作为索引，会触发覆盖索引，不需要回表id索引再查询，而如果使用的是前缀索引，就还得回表id索引去获取email字段的完整值。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> id<span class="token punctuation">,</span>email <span class="token keyword">from</span> <span class="token keyword">User</span> <span class="token keyword">where</span> email <span class="token operator">=</span> ‘<span class="token number">1540984562</span><span class="token variable">@qq.com</span>’<span class="token punctuation">;</span>
+</code></pre>
+<p>②<strong>使用hash构造新字段</strong></p>
+</blockquote>
 <h3 id="MySQL锁机制"><a href="#MySQL锁机制" class="headerlink" title="MySQL锁机制"></a>MySQL锁机制</h3><p>三锁：表锁、行锁、页锁</p>
 <h4 id="表锁-偏读"><a href="#表锁-偏读" class="headerlink" title="表锁(偏读)"></a>表锁(偏读)</h4><p>偏向MyISAM存储引擎，开销小，加锁快；无死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。</p>
 <p>MyISAM在执行查询语句（SELECT）前，会自动给涉及的所有表加读锁，在执行增删改操作前，会自动给涉及的表加写锁。</p>
