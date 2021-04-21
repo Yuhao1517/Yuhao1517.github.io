@@ -463,14 +463,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.5k
+                    5.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    19 分
                 </div>
                 
 
@@ -645,6 +645,10 @@ if (windowWidth > 768) {
 <blockquote>
 <p>重新标记 的作用只是修改之前 并发标记 所获得的不可达对象，所以是没有办法处理 “浮动垃圾” 的。</p>
 </blockquote>
+<p><strong>CMS解决浮动垃圾问题</strong></p>
+<p>因为有这些浮动垃圾的存在，所以老年代不能在100%使用的时候才去进行垃圾回收，否则就放不下这些浮动垃圾了。有一个参数是“-XX:CMSInitiatingOccupancyFraction”，这个参数在jdk1.6里面默认是92%，意思是老年代使用了92%的空间就会执行垃圾回收了。</p>
+<p><strong>CMS解决内存碎片问题</strong></p>
+<p>CMS存在一个默认的参数 “-XX:+UseCMSCompactAtFullCollection”，意思是在Full GC之后再次STW，停止工作线程，整理内存空间，将存活的对象移到一边。还要一个参数是“-XX:+CMSFullGCsBeforeCompaction”,表示在进行多少次Full GC之后进行内存碎片整理，默认为0，即每次Full GC之后都进行内存碎片整理。</p>
 <p><strong>G1垃圾回收器</strong></p>
 <p>G1是一个并行回收器，它把堆内存分割为很多不相关的区域Region，使用不同的Region来表示Eden、幸存者0区、幸存者1区，老年代。</p>
 <p>G1整体上采用标记整理算法，局部是通过复制算法，不会产生内存碎片。</p>

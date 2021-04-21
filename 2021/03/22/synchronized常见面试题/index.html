@@ -463,14 +463,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -530,6 +530,32 @@ if (windowWidth > 768) {
 <p>②子类的方法被synchronized修饰(这里面试点主要考察锁对象的归属问题)：</p>
 <p>两个锁对象其实是一把锁，而且是<strong>子类对象作为锁</strong>。这也证明了: synchronized的锁是可重入锁。否则将出现死锁问题。</p>
 <h3 id="9、在开发过程中，你经常使用synchronized方法多还是synchronized代码块？and-why"><a href="#9、在开发过程中，你经常使用synchronized方法多还是synchronized代码块？and-why" class="headerlink" title="9、在开发过程中，你经常使用synchronized方法多还是synchronized代码块？and why?"></a>9、<strong>在开发过程中，你经常使用synchronized方法多还是synchronized代码块？and why?</strong></h3><p>synchronized同步的范围是越小越好。因为若该方法耗时很久，那其它线程必须等到该持锁线程执行完才能运行。(黄花菜都凉了都…)<br>而synchronized代码块部分只有这一部分是同步的，其它的照样可以异步执行，提高运行效率。</p>
+<h3 id="10、可重入锁概念以及应用场景"><a href="#10、可重入锁概念以及应用场景" class="headerlink" title="10、可重入锁概念以及应用场景"></a>10、可重入锁概念以及应用场景</h3><p><strong>可重入锁就是说某个线程已经获得某个锁，可以再次获取锁而不会出现死锁。</strong></p>
+<p>应用场景：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo1</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">functionA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"iAmFunctionA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">functionB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">functionB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"iAmFunctionB"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>functionA()和functionB()都是同步方法，当线程进入funcitonA()会获得该类的对象锁，这个锁”new Demo1()”，在functionA()对方法functionB()做了调用，但是functionB()也是同步的，因此该线程需要再次获得该对象锁（new Demo1()）。其他线程是无法获该对象锁的。</p>
+<p><strong>可重入锁的作用就是为了避免死锁，java中synchronized和ReentrantLock都是可重入锁</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Widget</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoggingWidget</span> <span class="token keyword">extends</span> <span class="token class-name">Widget</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
 
                 
             </div>
