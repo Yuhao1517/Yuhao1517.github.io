@@ -467,14 +467,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    4.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    17 分
                 </div>
                 
 
@@ -780,7 +780,8 @@ if (windowWidth > 768) {
 <p><img src="https://www.cr173.com/up/2013-1/2013010809291416894.png" alt="img"></p>
 <p><strong>503 Server Unavailable（服务器当前不能处理客户端的请求，一段时间后可能恢复正常。）</strong></p>
 <p>服务器目前无法使用（由于超载或停机维护）。 通常，这只是暂时状态。</p>
-<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h4><p><strong>关于HTTP请求GET和POST的区别</strong></p>
+<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h4><blockquote>
+<p><strong>关于HTTP请求GET和POST的区别</strong></p>
 <p>1.GET提交，请求的数据会附在URL之后（就是把数据放置在HTTP协议头的请求行中），以?分割URL和传输数据，多个参数用&amp;连接;例如：</p>
 <p>login.action?name=root&amp;password=root&amp;verify=%E4%BD%A0 %E5%A5%BD。</p>
 <p> POST提交：把提交的数据放置在是HTTP包的包体＜request-body＞中。</p>
@@ -792,6 +793,16 @@ if (windowWidth > 768) {
 <p>POST:由于不是通过URL传值，<strong>理论上数据不受限</strong>。但实际各个WEB服务器会规定对post提交数据大小进行限制，Apache、IIS6都有各自的配置。</p>
 <p>3.安全性：</p>
 <p>POST的安全性要比GET的安全性高。注意：这里所说的安全性和上面GET提到的“安全”不是同个概念。上面“安全”的含义仅仅是不作数据修改，而这里安全的含义是真正的Security的含义，比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存， (2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了。</p>
+<p><strong>还有很重要的一点：</strong></p>
+<p>post和get是HTTP协议的，而HTTP协议是基于TCP/IP协议族的，所以说post和get本质也是基于TCP/IP的，两种方式建立连接的过程也是通过三次握手。</p>
+<p><strong>GET产生一个TCP数据包</strong>，对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；<strong>POST产生两个TCP数据包</strong>，而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</p>
+<p>GET<br>浏览器请求TCP连接（第一次握手）<br>服务器答应进行TCP连接（第二次握手）<br>浏览器确认，并发送GET请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）<br>服务器返回200 OK响应<br>POST<br>浏览器请求TCP连接（第一次握手）</p>
+<p>服务器答应进行TCP连接（第二次握手）</p>
+<p>浏览器确认，并发送POST请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
+<p>服务器返回100 Continue响应</p>
+<p>浏览器发送数据</p>
+<p>服务器返回200 OK响应</p>
+</blockquote>
 <p><strong>关于HTTP请求POST和PUT的区别</strong></p>
 <p>PUT和POS都有更改指定URI的语义.但PUT被定义为幂等的方法，POST则不是幂等的方法。</p>
 <p>如果一个方法重复执行多次，产生的效果是一样的，那就是幂等的。也就是说：</p>
