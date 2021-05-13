@@ -463,14 +463,14 @@ if (windowWidth > 768) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -486,6 +486,8 @@ if (windowWidth > 768) {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h2><p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30342639/article/details/107552255">https://blog.csdn.net/weixin_30342639/article/details/107552255</a></p>
+<p>事务具有<strong>隔离性</strong>：数据库允许多个并发事务同时对其数据进行读写和修改，隔离性可以防止在多个事务并发执行时，因多个事务交叉执行而导致的数据不一致。</p>
+<p>数据库通常使用锁来实现隔离性。最原生的锁，锁住一个资源后会禁止其他任何线程访问同一个资源。但是很多应用的一个特点都是读多写少的场景，很多数据的读取次数远大于修改的次数，而读取数据间互相排斥显得不是很必要。所以就使用了一种读写锁的方法，读锁和读锁之间不互斥，而写锁和写锁、读锁都互斥。这样就很大提升了系统的并发能力。之后人们发现并发读还是不够，又提出了能不能让读写之间也不冲突的方法，就是读取数据时通过一种类似快照的方式将数据保存下来，这样读锁就和写锁不冲突了。多版本并发控制（MVCC）的实现是通过保存数据在某个时间点的快照来实现的。</p>
 <p>Multi-Version Concurrency Control 多版本并发控制</p>
 <p>InnoDB事务分为四个隔离级别，默认的隔离级别为REPETABLE READ，需要两个不同的事务相互之间不能影响，而且还能支持并发，这点悲观锁是达不到的，所以REPETABLE READ采用的就是乐观锁，而乐观锁的实现采用的就是MVCC。</p>
 <p>在MySQL中，MVCC只在读已提交和可重复读两个事务级别下有效。底层是通过undo日志中的版本链和ReadView一致性视图来实现的。MVCC就是在多个事务同时存在时，select语句找寻到具体是版本链上的哪个版本，然后在找到的版本上返回其中所记录的数据的过程。</p>
